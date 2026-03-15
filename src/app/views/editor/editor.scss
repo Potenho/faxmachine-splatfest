@@ -1,44 +1,26 @@
+@use 'mixins' as *;
+
 // ─── Background blobs ─────────────────────────────────────────────────────────
 
-@keyframes blob-drift-1 {
+@keyframes blob-drift-e1 {
   0%, 100% { transform: translate(0, 0) scale(1); }
   33%       { transform: translate(-40px, 60px) scale(1.06); }
   66%       { transform: translate(30px, -30px) scale(0.94); }
 }
 
-@keyframes blob-drift-2 {
+@keyframes blob-drift-e2 {
   0%, 100% { transform: translate(0, 0) scale(1); }
   33%       { transform: translate(50px, -40px) scale(1.08); }
   66%       { transform: translate(-35px, 40px) scale(0.93); }
 }
 
-@keyframes blob-drift-3 {
+@keyframes blob-drift-e3 {
   0%, 100% { transform: translate(0, 0) scale(1); }
   50%       { transform: translate(-25px, -50px) scale(1.05); }
 }
 
-.blobs {
-  position: fixed;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 0;
-}
-
 .blobs__item {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  will-change: transform;
-
-  @media (max-width: 768px) {
-    opacity: 0.5;
-  }
-
-  @media (prefers-reduced-motion: no-preference) {
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: infinite;
-  }
+  @media (max-width: 768px) { opacity: 0.5; }
 
   &--1 {
     width: 550px;
@@ -48,7 +30,7 @@
     background: radial-gradient(circle, color-mix(in srgb, var(--color-primary) 50%, transparent), transparent 70%);
 
     @media (prefers-reduced-motion: no-preference) {
-      animation: blob-drift-1 24s infinite;
+      animation: blob-drift-e1 24s infinite;
     }
   }
 
@@ -60,7 +42,7 @@
     background: radial-gradient(circle, color-mix(in srgb, var(--color-secondary) 38%, transparent), transparent 70%);
 
     @media (prefers-reduced-motion: no-preference) {
-      animation: blob-drift-2 30s infinite;
+      animation: blob-drift-e2 30s infinite;
     }
   }
 
@@ -72,7 +54,7 @@
     background: radial-gradient(circle, color-mix(in srgb, var(--color-primary) 18%, transparent), transparent 70%);
 
     @media (prefers-reduced-motion: no-preference) {
-      animation: blob-drift-3 20s infinite;
+      animation: blob-drift-e3 20s infinite;
     }
   }
 }
@@ -101,9 +83,7 @@
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
 
-  @media (max-width: 768px) {
-    display: none;
-  }
+  @media (max-width: 768px) { display: none; }
 }
 
 .editor__brand {
@@ -154,11 +134,7 @@
   color: var(--color-text-muted);
   transition: color 0.15s ease, background 0.15s ease;
 
-  svg {
-    width: 1rem;
-    height: 1rem;
-    flex-shrink: 0;
-  }
+  svg { width: 1rem; height: 1rem; flex-shrink: 0; }
 
   &:hover {
     color: var(--color-text);
@@ -172,10 +148,7 @@
     svg { color: var(--color-primary-light); }
   }
 
-  &:focus-visible {
-    outline: 2px solid color-mix(in srgb, var(--color-secondary) 75%, transparent);
-    outline-offset: 2px;
-  }
+  @include focus-ring();
 }
 
 // ─── Sidebar footer ───────────────────────────────────────────────────────────
@@ -203,26 +176,16 @@
   cursor: pointer;
   transition: color 0.15s ease, background 0.15s ease;
 
-  svg {
-    width: 1rem;
-    height: 1rem;
-    flex-shrink: 0;
-  }
+  svg { width: 1rem; height: 1rem; flex-shrink: 0; }
 
   &:hover {
     color: var(--color-error);
     background: color-mix(in srgb, var(--color-error) 8%, transparent);
   }
 
-  &:focus-visible {
-    outline: 2px solid color-mix(in srgb, var(--color-secondary) 75%, transparent);
-    outline-offset: 2px;
-  }
+  @include focus-ring();
 
-  &--icon {
-    width: auto;
-    padding: 0.5rem;
-  }
+  &--icon { width: auto; padding: 0.5rem; }
 }
 
 .editor__save-btn {
@@ -240,26 +203,16 @@
   cursor: pointer;
   transition: color 0.15s ease, background 0.15s ease;
 
-  svg {
-    width: 1rem;
-    height: 1rem;
-    flex-shrink: 0;
-  }
+  svg { width: 1rem; height: 1rem; flex-shrink: 0; }
 
   &:hover {
     color: var(--color-secondary);
     background: color-mix(in srgb, var(--color-secondary) 8%, transparent);
   }
 
-  &:focus-visible {
-    outline: 2px solid color-mix(in srgb, var(--color-secondary) 75%, transparent);
-    outline-offset: 2px;
-  }
+  @include focus-ring();
 
-  &--icon {
-    width: auto;
-    padding: 0.5rem;
-  }
+  &--icon { width: auto; padding: 0.5rem; }
 }
 
 // ─── Mobile topbar actions ─────────────────────────────────────────────────────
@@ -345,25 +298,16 @@
   color: var(--color-text-muted);
   transition: color 0.15s ease;
 
-  svg {
-    width: 1.25rem;
-    height: 1.25rem;
-  }
+  svg { width: 1.25rem; height: 1.25rem; }
 
-  &:hover {
-    color: var(--color-text);
-  }
+  &:hover { color: var(--color-text); }
 
   &--active {
     color: var(--color-secondary);
-
     svg { stroke: var(--color-secondary); }
   }
 
-  &:focus-visible {
-    outline: 2px solid color-mix(in srgb, var(--color-secondary) 75%, transparent);
-    outline-offset: -2px;
-  }
+  @include focus-ring($offset: -2px);
 }
 
 // ─── Close confirmation modal ──────────────────────────────────────────────────
@@ -431,10 +375,7 @@
   background: color-mix(in srgb, var(--color-error) 15%, transparent);
   color: var(--color-error);
 
-  svg {
-    width: 1.375rem;
-    height: 1.375rem;
-  }
+  svg { width: 1.375rem; height: 1.375rem; }
 }
 
 .editor-modal__title {
@@ -471,11 +412,7 @@
   transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
   border: 1px solid transparent;
 
-  svg {
-    width: 1rem;
-    height: 1rem;
-    flex-shrink: 0;
-  }
+  svg { width: 1rem; height: 1rem; flex-shrink: 0; }
 
   &:active { transform: scale(0.97); }
 
@@ -489,10 +426,7 @@
       border-color: color-mix(in srgb, var(--color-secondary) 55%, transparent);
     }
 
-    &:focus-visible {
-      outline: 2px solid color-mix(in srgb, var(--color-secondary) 75%, transparent);
-      outline-offset: 2px;
-    }
+    @include focus-ring();
   }
 
   &--exit {
@@ -505,10 +439,7 @@
       border-color: color-mix(in srgb, var(--color-error) 45%, transparent);
     }
 
-    &:focus-visible {
-      outline: 2px solid color-mix(in srgb, var(--color-error) 75%, transparent);
-      outline-offset: 2px;
-    }
+    @include focus-ring(var(--color-error));
   }
 
   &--cancel {
@@ -522,9 +453,6 @@
       color: var(--color-text);
     }
 
-    &:focus-visible {
-      outline: 2px solid color-mix(in srgb, var(--color-secondary) 75%, transparent);
-      outline-offset: 2px;
-    }
+    @include focus-ring();
   }
 }

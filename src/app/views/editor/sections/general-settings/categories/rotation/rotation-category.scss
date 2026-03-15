@@ -1,3 +1,6 @@
+@use 'fields';
+@use 'mixins' as *;
+
 // ─── Keyframes ────────────────────────────────────────────────────────────────
 
 @keyframes rotation-backdrop-enter {
@@ -25,29 +28,11 @@
   width: 100%;
 }
 
-// ─── Rule field ───────────────────────────────────────────────────────────────
-
-.field {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-}
-
-.field__label {
-  font-size: 0.875rem;
-  font-weight: 700;
-  color: var(--color-text);
-}
-
-.field__desc {
-  font-size: 0.8rem;
-  color: var(--color-text-muted);
-  line-height: 1.4;
-}
+// ─── Rule field select ────────────────────────────────────────────────────────
 
 .field__select {
   margin-top: 0.25rem;
-  padding: 0.6rem 0.875rem;
+  padding: 0.6rem 2.25rem 0.6rem 0.875rem;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: 0.5rem;
@@ -59,7 +44,6 @@
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 0.75rem center;
-  padding-right: 2.25rem;
 
   &:focus {
     outline: none;
@@ -145,15 +129,10 @@
     border-color: color-mix(in srgb, var(--color-secondary) 30%, transparent);
     transform: translateY(-1px);
 
-    .stage-card__edit-hint {
-      opacity: 1;
-    }
+    .stage-card__edit-hint { opacity: 1; }
   }
 
-  &:focus-visible {
-    outline: 2px solid color-mix(in srgb, var(--color-secondary) 75%, transparent);
-    outline-offset: 2px;
-  }
+  @include focus-ring();
 
   @media (max-width: 480px) {
     flex-direction: column;
@@ -209,14 +188,9 @@
   opacity: 0;
   transition: opacity 0.15s ease;
 
-  svg {
-    width: 100%;
-    height: 100%;
-  }
+  svg { width: 100%; height: 100%; }
 
-  @media (max-width: 480px) {
-    display: none;
-  }
+  @media (max-width: 480px) { display: none; }
 }
 
 // ─── Remove button ────────────────────────────────────────────────────────────
@@ -236,6 +210,16 @@
   cursor: pointer;
   transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 
+  svg { width: 0.875rem; height: 0.875rem; }
+
+  &:hover {
+    color: var(--color-error);
+    background: color-mix(in srgb, var(--color-error) 10%, transparent);
+    border-color: color-mix(in srgb, var(--color-error) 20%, transparent);
+  }
+
+  @include focus-ring(var(--color-error));
+
   @media (max-width: 480px) {
     position: absolute;
     top: 0.25rem;
@@ -248,26 +232,7 @@
     color: var(--color-error);
     border-color: transparent;
 
-    svg {
-      width: 0.75rem;
-      height: 0.75rem;
-    }
-  }
-
-  svg {
-    width: 0.875rem;
-    height: 0.875rem;
-  }
-
-  &:hover {
-    color: var(--color-error);
-    background: color-mix(in srgb, var(--color-error) 10%, transparent);
-    border-color: color-mix(in srgb, var(--color-error) 20%, transparent);
-  }
-
-  &:focus-visible {
-    outline: 2px solid color-mix(in srgb, var(--color-error) 75%, transparent);
-    outline-offset: 2px;
+    svg { width: 0.75rem; height: 0.75rem; }
   }
 }
 
@@ -289,10 +254,7 @@
   cursor: pointer;
   transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 
-  svg {
-    width: 1rem;
-    height: 1rem;
-  }
+  svg { width: 1rem; height: 1rem; }
 
   &:hover {
     background: color-mix(in srgb, var(--color-secondary) 12%, transparent);
@@ -300,10 +262,7 @@
     color: var(--color-secondary);
   }
 
-  &:focus-visible {
-    outline: 2px solid color-mix(in srgb, var(--color-secondary) 75%, transparent);
-    outline-offset: 2px;
-  }
+  @include focus-ring();
 }
 
 // ─── Stage picker modal ───────────────────────────────────────────────────────
@@ -379,20 +338,14 @@
   flex-shrink: 0;
   transition: background 0.15s ease, color 0.15s ease;
 
-  svg {
-    width: 1rem;
-    height: 1rem;
-  }
+  svg { width: 1rem; height: 1rem; }
 
   &:hover {
     background: var(--color-surface);
     color: var(--color-text);
   }
 
-  &:focus-visible {
-    outline: 2px solid color-mix(in srgb, var(--color-secondary) 75%, transparent);
-    outline-offset: 2px;
-  }
+  @include focus-ring();
 }
 
 // ─── Stage picker grid ────────────────────────────────────────────────────────
@@ -436,10 +389,7 @@
     box-shadow: 0 6px 20px color-mix(in srgb, var(--color-primary) 15%, transparent);
   }
 
-  &:focus-visible {
-    outline: 2px solid color-mix(in srgb, var(--color-secondary) 75%, transparent);
-    outline-offset: 2px;
-  }
+  @include focus-ring();
 }
 
 .stage-picker__img {

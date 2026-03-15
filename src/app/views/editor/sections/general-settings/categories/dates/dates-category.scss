@@ -1,3 +1,5 @@
+@use 'fields';
+
 .dates-form {
   display: flex;
   flex-direction: column;
@@ -5,58 +7,11 @@
   width: 100%;
 }
 
-.field {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-}
-
-.field__label {
-  font-size: 0.875rem;
-  font-weight: 700;
-  color: var(--color-text);
-}
-
-.field__desc {
-  font-size: 0.8rem;
-  color: var(--color-text-muted);
-  line-height: 1.4;
-}
-
 .field__input {
-  margin-top: 0.25rem;
-  padding: 0.6rem 0.875rem;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: 0.5rem;
-  color: var(--color-text);
-  font-size: 0.95rem;
-  transition: border-color 0.15s ease, box-shadow 0.15s ease;
   color-scheme: dark;
 
   &::-webkit-calendar-picker-indicator {
     filter: invert(0.7);
     cursor: pointer;
   }
-
-  &:focus {
-    outline: none;
-    border-color: color-mix(in srgb, var(--color-primary) 60%, transparent);
-    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 12%, transparent);
-  }
-
-  &--error {
-    border-color: color-mix(in srgb, var(--color-error) 60%, transparent);
-
-    &:focus {
-      border-color: var(--color-error);
-      box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-error) 12%, transparent);
-    }
-  }
-}
-
-.field__error {
-  font-size: 0.775rem;
-  color: var(--color-error);
-  font-weight: 600;
 }

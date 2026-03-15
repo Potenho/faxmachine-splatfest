@@ -53,6 +53,28 @@ a {
   text-decoration: none;
 }
 
+// ─── Background blobs ─────────────────────────────────────────────────────────
+
+.blobs {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.blobs__item {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  will-change: transform;
+
+  @media (prefers-reduced-motion: no-preference) {
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+  }
+}
+
 @keyframes page-fade-in {
   from {
     opacity: 0;

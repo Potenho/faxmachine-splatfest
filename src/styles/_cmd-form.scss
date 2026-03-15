@@ -1,0 +1,75 @@
+// ─── Command Form Layout ───────────────────────────────────────────────────────
+// Shared layout styles for command editor forms.
+// Each editor SCSS should @use 'fields' and @use 'cmd-form'.
+
+.cmd-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+
+  &__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.875rem;
+
+    @media (max-width: 480px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__textarea {
+    resize: vertical;
+    min-height: 4.5rem;
+    font-family: inherit;
+    line-height: 1.5;
+  }
+
+  &__toggles {
+    display: flex;
+    flex-direction: column;
+    background: color-mix(in srgb, var(--color-primary) 5%, transparent);
+    border: 1px solid var(--color-border);
+    border-radius: 0.625rem;
+    overflow: hidden;
+
+    > .toggle {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--color-border);
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &:hover {
+        background: color-mix(in srgb, var(--color-primary) 8%, transparent);
+      }
+    }
+
+    &--row {
+      flex-direction: row;
+
+      > .toggle {
+        flex: 1;
+        border-bottom: none;
+        border-right: 1px solid var(--color-border);
+
+        &:last-child {
+          border-right: none;
+        }
+      }
+
+      @media (max-width: 480px) {
+        flex-direction: column;
+
+        > .toggle {
+          border-right: none;
+          border-bottom: 1px solid var(--color-border);
+
+          &:last-child {
+            border-bottom: none;
+          }
+        }
+      }
+    }
+  }
+}

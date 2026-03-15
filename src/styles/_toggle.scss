@@ -1,0 +1,67 @@
+// ─── Pill Toggle ──────────────────────────────────────────────────────────────
+// Usage:
+//   <label class="toggle">
+//     <input type="checkbox" class="toggle__input" />
+//     <span class="toggle__label">Label text</span>
+//     <span class="toggle__track" aria-hidden="true"></span>
+//   </label>
+
+.toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.toggle__input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+
+  &:checked ~ .toggle__track {
+    background: var(--color-team-neutral);
+
+    &::after {
+      transform: translateX(1rem);
+    }
+  }
+
+  &:focus-visible ~ .toggle__track {
+    outline: 2px solid var(--color-team-neutral);
+    outline-offset: 2px;
+  }
+}
+
+.toggle__label {
+  flex: 1;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.toggle__track {
+  flex-shrink: 0;
+  position: relative;
+  width: 2.25rem;
+  height: 1.25rem;
+  background: var(--color-border);
+  border-radius: 99px;
+  transition: background 150ms ease;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0.125rem;
+    left: 0.125rem;
+    width: 1rem;
+    height: 1rem;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+    transition: transform 150ms ease;
+  }
+}

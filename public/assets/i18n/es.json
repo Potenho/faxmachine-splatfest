@@ -104,6 +104,129 @@
           }
         }
       }
+    },
+    "newsScript": {
+      "tabsAriaLabel": "Secciones del guión de noticias",
+      "language": "Idioma",
+      "sections": {
+        "announce": "Anuncio",
+        "start": "Inicio",
+        "resultA": "Resultado A",
+        "resultB": "Resultado B"
+      },
+      "languages": {
+        "EUde": "EU Alemán",
+        "EUen": "EU Inglés",
+        "EUes": "EU Español",
+        "EUfr": "EU Francés",
+        "EUit": "EU Italiano",
+        "JPja": "JP Japonés",
+        "USen": "US Inglés",
+        "USes": "US Español",
+        "USfr": "US Francés"
+      },
+      "commandList": {
+        "title": "Comandos",
+        "empty": "No hay comandos para esta sección.",
+        "addCommand": "Agregar Comando",
+        "duplicateCommand": "Duplicar comando",
+        "deleteCommand": "Eliminar comando"
+      },
+      "sync": {
+        "copyTo": "Copiar a...",
+        "copyToAriaLabel": "Copiar comandos a otro idioma",
+        "modal": {
+          "title": "Copiar Comandos",
+          "desc": "Sobrescribe los comandos de otro idioma con los del idioma actual.",
+          "sourceLabel": "De",
+          "targetLabel": "A",
+          "allLanguages": "Todos los idiomas",
+          "cancel": "Cancelar",
+          "apply": "Copiar"
+        }
+      },
+      "editorPanel": {
+        "ariaLabel": "Editor de comandos",
+        "placeholder": "Selecciona un comando para editar."
+      },
+      "commandEditor": {
+        "typeLabel": "Tipo de comando",
+        "noOptions": "Este comando no tiene opciones configurables.",
+        "fields": {
+          "speaker": "Hablante",
+          "emotion": "Emoción",
+          "text": "Texto",
+          "waitButton": "Botón de espera",
+          "skip": "Saltar",
+          "skipOptions": {
+            "default": "Default",
+            "allow": "Allow",
+            "deny": "Deny"
+          },
+          "label": "Etiqueta",
+          "kind": "Tipo",
+          "picture": "Imagen",
+          "mapId": "Mapa",
+          "headerType": "Tipo de encabezado"
+        },
+        "speakers": {
+          "cIdolLeft": "Callie",
+          "cIdolRight": "Marie",
+          "cIdolAll": "Callie & Marie"
+        },
+        "commandTypes": {
+          "SpeakRawText": "Speak (Raw Text)",
+          "ChangeAnimation": "Change Animation",
+          "SpeakMsgLabel": "Speak (Msg Label)",
+          "ClearMsg": "Clear Message",
+          "WaitTelop": "Wait Telop",
+          "CatchIn": "Catch In",
+          "CatchOut": "Catch Out",
+          "TitleIn": "Title In",
+          "TitleOut": "Title Out",
+          "DispDefault": "Display Default",
+          "DispFest": "Display Fest",
+          "DispFixGame": "Display Fix Game",
+          "DispPicture": "Display Picture",
+          "DispMap": "Display Map",
+          "ShowHeader": "Show Header"
+        },
+        "emotions": {
+          "cGreeting": "Greeting",
+          "cSurprised": "Surprised",
+          "cHappy": "Happy",
+          "cNormalTalk": "Normal",
+          "cFeed": "Feed",
+          "cAngry": "Angry",
+          "cBored": "Bored",
+          "cWait": "Wait"
+        },
+        "dispFestOptions": {
+          "cFaxIn": "Fax In",
+          "cFaxPaper": "Fax Paper",
+          "cFaxOut": "Fax Out",
+          "cFest": "Fest"
+        },
+        "pictureTypes": {
+          "cFirstNewsUFO": "First News UFO",
+          "cFirstNewsCatfish": "First News Catfish",
+          "cMissionEnding": "Mission Ending",
+          "cGachiRelease": "Gachi Release",
+          "cGachiAreaRelease": "Gachi Area Release",
+          "cGachiRideRelease": "Gachi Ride Release",
+          "cGachiGoalRelease": "Gachi Goal Release"
+        },
+        "headerTypes": {
+          "cNone": "None",
+          "cFesAnnounce": "Fest Announce",
+          "cFesEnd": "Fest End",
+          "cStage": "Stage",
+          "cFirstNewsUFO": "First News UFO",
+          "cFirstNewsCatfish": "First News Catfish",
+          "cMissionEnding": "Mission Ending",
+          "cUpdate": "Update"
+        }
+      }
     }
   },
   "home": {

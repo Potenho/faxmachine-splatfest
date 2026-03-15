@@ -1,0 +1,32 @@
+.no-options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1.5rem 1rem;
+  text-align: center;
+
+  &__icon {
+    width: 2rem;
+    height: 2rem;
+    color: var(--color-text-muted);
+    opacity: 0.6;
+  }
+
+  &__msg {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    margin: 0;
+  }
+
+  &__cmd {
+    font-size: 0.75rem;
+    font-family: monospace;
+    color: var(--color-primary-light);
+    background: color-mix(in srgb, var(--color-primary) 12%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-primary) 25%, transparent);
+    padding: 0.125rem 0.5rem;
+    border-radius: 0.375rem;
+  }
+}

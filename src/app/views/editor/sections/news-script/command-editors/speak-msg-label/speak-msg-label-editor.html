@@ -1,0 +1,27 @@
+<div class="cmd-form" [formGroup]="form">
+
+  <div class="field">
+    <label class="field__label" for="sml-label">
+      {{ 'editor.newsScript.commandEditor.fields.label' | transloco }}
+    </label>
+    <input id="sml-label" type="text" class="field__input" formControlName="Label" />
+  </div>
+
+  <div class="field">
+    <label class="field__label" for="sml-skip">
+      {{ 'editor.newsScript.commandEditor.fields.skip' | transloco }}
+    </label>
+    <select id="sml-skip" class="field__select" formControlName="Skip">
+      <option [ngValue]="null">
+        {{ 'editor.newsScript.commandEditor.fields.skipOptions.default' | transloco }}
+      </option>
+      <option [ngValue]="true">
+        {{ 'editor.newsScript.commandEditor.fields.skipOptions.allow' | transloco }}
+      </option>
+      <option [ngValue]="false">
+        {{ 'editor.newsScript.commandEditor.fields.skipOptions.deny' | transloco }}
+      </option>
+    </select>
+  </div>
+
+</div>

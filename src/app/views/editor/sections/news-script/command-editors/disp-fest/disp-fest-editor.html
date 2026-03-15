@@ -1,0 +1,16 @@
+<div class="cmd-form" [formGroup]="form">
+
+  <div class="field">
+    <label class="field__label" for="df-kind">
+      {{ 'editor.newsScript.commandEditor.fields.kind' | transloco }}
+    </label>
+    <select id="df-kind" class="field__select" formControlName="Kind">
+      @for (opt of kindValues; track opt) {
+        <option [value]="opt">
+          {{ 'editor.newsScript.commandEditor.dispFestOptions.' + opt | transloco }}
+        </option>
+      }
+    </select>
+  </div>
+
+</div>

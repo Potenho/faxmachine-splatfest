@@ -1,0 +1,575 @@
+@use 'fields';
+
+// ─── Host ─────────────────────────────────────────────────────────────────────
+
+:host {
+  display: block;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+
+  @media (prefers-reduced-motion: no-preference) {
+    animation: page-fade-in 220ms ease both;
+  }
+}
+
+// ─── Wrapper ──────────────────────────────────────────────────────────────────
+
+.ns {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  gap: 1rem;
+  height: 100%;
+  box-sizing: border-box;
+
+  @media (max-width: 640px) {
+    height: auto;
+    min-height: 100%;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.875rem;
+    gap: 0.75rem;
+  }
+}
+
+// ─── Section tabs ─────────────────────────────────────────────────────────────
+
+.ns__tabs {
+  display: flex;
+  gap: 0.375rem;
+  background: color-mix(in srgb, var(--color-surface) 200%, transparent);
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  padding: 0.3rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  flex-shrink: 0;
+
+  &::-webkit-scrollbar { display: none; }
+}
+
+.ns__tab {
+  flex: 1;
+  min-width: max-content;
+  padding: 0.5rem 1rem;
+  border: none;
+  background: transparent;
+  border-radius: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: background 150ms, color 150ms;
+  white-space: nowrap;
+
+  &:hover {
+    background: color-mix(in srgb, var(--color-primary) 10%, transparent);
+    color: var(--color-text);
+  }
+
+  &--active {
+    background: var(--color-team-neutral);
+    color: #fff;
+
+    &:hover {
+      background: var(--color-team-neutral);
+      color: #fff;
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+}
+
+// ─── Language & sync bar ──────────────────────────────────────────────────────
+
+.ns__lang-sync-bar {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.75rem;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+}
+
+.ns__sync-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+  flex-wrap: wrap;
+}
+
+
+.ns__sync-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.75rem;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  font-size: 0.775rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  white-space: nowrap;
+
+  svg { width: 0.75rem; height: 0.75rem; flex-shrink: 0; }
+
+  &:hover {
+    background: color-mix(in srgb, var(--color-team-neutral) 10%, transparent);
+    border-color: color-mix(in srgb, var(--color-team-neutral) 35%, transparent);
+    color: var(--color-team-neutral);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-team-neutral);
+    outline-offset: 2px;
+  }
+}
+
+// ─── Sync dialog ──────────────────────────────────────────────────────────────
+
+@keyframes ns-sync-backdrop-enter {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes ns-sync-modal-enter {
+  from { opacity: 0; transform: scale(0.92) translateY(12px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.ns__sync-dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: none;
+  padding: 0;
+  background: transparent;
+  max-width: 100vw;
+  max-height: 100dvh;
+
+  &::backdrop {
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+
+    @media (prefers-reduced-motion: no-preference) {
+      animation: ns-sync-backdrop-enter 0.2s ease both;
+    }
+  }
+}
+
+.ns__sync-dialog-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.875rem;
+  width: min(360px, calc(100vw - 2rem));
+  padding: 2rem 1.75rem;
+  background: #0e0c18;
+  border: 1px solid var(--color-border);
+  border-radius: 1.25rem;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5);
+  text-align: center;
+
+  @media (prefers-reduced-motion: no-preference) {
+    animation: ns-sync-modal-enter 0.25s 0.05s ease both;
+  }
+
+  .field {
+    width: 100%;
+    text-align: left;
+  }
+}
+
+.ns__sync-dialog-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--color-team-neutral) 15%, transparent);
+  color: var(--color-team-neutral);
+
+  svg { width: 1.375rem; height: 1.375rem; }
+}
+
+.ns__sync-dialog-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.ns__sync-dialog-desc {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  margin: 0 0 0.25rem;
+}
+
+.ns__sync-dialog-actions {
+  display: flex;
+  gap: 0.5rem;
+  width: 100%;
+  margin-top: 0.25rem;
+}
+
+.ns__sync-dialog-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1rem;
+  border-radius: 0.625rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+  border: 1px solid transparent;
+
+  &--cancel {
+    background: var(--color-surface);
+    border-color: var(--color-border);
+    color: var(--color-text-muted);
+
+    &:hover {
+      background: color-mix(in srgb, var(--color-text) 8%, transparent);
+      border-color: color-mix(in srgb, var(--color-text) 18%, transparent);
+      color: var(--color-text);
+    }
+  }
+
+  &--apply {
+    background: color-mix(in srgb, var(--color-team-neutral) 15%, transparent);
+    border-color: color-mix(in srgb, var(--color-team-neutral) 35%, transparent);
+    color: var(--color-team-neutral);
+
+    &:hover {
+      background: color-mix(in srgb, var(--color-team-neutral) 22%, transparent);
+      border-color: color-mix(in srgb, var(--color-team-neutral) 55%, transparent);
+    }
+  }
+}
+
+// ─── Split panel ──────────────────────────────────────────────────────────────
+
+.ns__split {
+  display: grid;
+  grid-template-columns: minmax(220px, 2fr) 3fr;
+  gap: 1rem;
+  flex: 1;
+  min-height: 0;
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    flex: none;
+  }
+}
+
+// ─── Command list ─────────────────────────────────────────────────────────────
+
+.ns__commands {
+  display: flex;
+  flex-direction: column;
+  background: color-mix(in srgb, var(--color-surface) 200%, transparent);
+  border: 1px solid var(--color-border);
+  border-radius: 0.875rem;
+  overflow: hidden;
+  min-height: 0;
+
+  @media (max-width: 640px) {
+    max-height: 45vh;
+  }
+}
+
+.ns__commands-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--color-border);
+  background: color-mix(in srgb, var(--color-primary) 7%, transparent);
+  flex-shrink: 0;
+}
+
+.ns__commands-title {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--color-text);
+}
+
+.ns__commands-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.125rem 0.5rem;
+  border-radius: 99px;
+  background: color-mix(in srgb, var(--color-primary) 15%, transparent);
+  color: var(--color-primary-light);
+}
+
+.ns__command-list {
+  list-style: none;
+  margin: 0;
+  padding: 0.375rem;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+  flex: 1;
+}
+
+.ns__command-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+  padding: 0.5rem 0.625rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 120ms;
+  border-bottom: 1px solid var(--color-border);
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background: color-mix(in srgb, var(--color-primary) 8%, transparent);
+  }
+
+  &--selected {
+    background: color-mix(in srgb, var(--color-primary) 15%, transparent);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  &--no-options {
+    &:hover {
+      background: color-mix(in srgb, var(--color-info) 8%, transparent);
+    }
+
+    &.ns__command-item--selected {
+      background: color-mix(in srgb, var(--color-info) 15%, transparent);
+    }
+  }
+}
+
+.ns__command-actions {
+  flex-shrink: 0;
+  display: flex;
+  gap: 0.125rem;
+  align-self: center;
+  margin-left: auto;
+  padding-left: 0.5rem;
+  border-left: 1px solid var(--color-border);
+}
+
+.ns__command-action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.375rem;
+  height: 1.375rem;
+  padding: 0;
+  border: none;
+  background: transparent;
+  border-radius: 0.25rem;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: background 120ms, color 120ms;
+
+  svg { width: 0.7rem; height: 0.7rem; }
+
+  &--duplicate:hover {
+    color: var(--color-text);
+    background: color-mix(in srgb, var(--color-text) 10%, transparent);
+  }
+
+  &--delete:hover {
+    color: var(--color-error);
+    background: color-mix(in srgb, var(--color-error) 12%, transparent);
+  }
+}
+
+.ns__command-index {
+  flex-shrink: 0;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  padding-top: 0.1rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.ns__command-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  min-width: 0;
+}
+
+.ns__command-label {
+  font-size: 0.8125rem;
+  color: var(--color-text);
+  word-break: break-word;
+  line-height: 1.45;
+
+  &--no-options {
+    color: var(--color-info);
+    font-weight: 600;
+    font-style: italic;
+  }
+}
+
+.ns__command-speaker {
+  font-weight: 700;
+
+  &--callie   { color: var(--color-team-alpha); }
+  &--marie    { color: var(--color-team-bravo); }
+  &--all      { color: var(--color-team-neutral); }
+  &--invalid  { color: var(--color-error); }
+}
+
+.ns__command-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.ns__badge {
+  display: inline-block;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.1rem 0.4rem;
+  border-radius: 99px;
+  text-transform: uppercase;
+
+  &--emotion {
+    background: color-mix(in srgb, var(--color-primary) 18%, transparent);
+    color: var(--color-primary-light);
+    border: 1px solid color-mix(in srgb, var(--color-primary) 30%, transparent);
+  }
+
+  &--wait {
+    background: color-mix(in srgb, #f59e0b 18%, transparent);
+    color: #fbbf24;
+    border: 1px solid color-mix(in srgb, #f59e0b 30%, transparent);
+  }
+
+  &--noskip {
+    background: color-mix(in srgb, var(--color-error) 18%, transparent);
+    color: var(--color-error);
+    border: 1px solid color-mix(in srgb, var(--color-error) 30%, transparent);
+  }
+}
+
+.ns__command-empty {
+  padding: 2rem 1rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.ns__commands-footer {
+  flex-shrink: 0;
+  padding: 0.375rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.ns__command-add-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  background: color-mix(in srgb, var(--color-team-neutral) 6%, transparent);
+  border: 1px dashed color-mix(in srgb, var(--color-team-neutral) 30%, transparent);
+  border-radius: 0.5rem;
+  color: color-mix(in srgb, var(--color-team-neutral) 70%, transparent);
+  font-size: 0.775rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+
+  svg { width: 0.75rem; height: 0.75rem; }
+
+  &:hover {
+    background: color-mix(in srgb, var(--color-team-neutral) 12%, transparent);
+    border-color: color-mix(in srgb, var(--color-team-neutral) 55%, transparent);
+    color: var(--color-team-neutral);
+  }
+
+  &:focus-visible {
+    outline: 2px solid color-mix(in srgb, var(--color-team-neutral) 75%, transparent);
+    outline-offset: 2px;
+  }
+}
+
+// ─── Editor panel ─────────────────────────────────────────────────────────────
+
+.ns__editor {
+  background: color-mix(in srgb, var(--color-surface) 200%, transparent);
+  border: 1px solid var(--color-border);
+  border-radius: 0.875rem;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: 640px) {
+    overflow-y: visible;
+  }
+}
+
+.ns__editor-placeholder {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  text-align: center;
+  padding: 2rem;
+}
+
+@keyframes cmd-editor-enter {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.ns__editor-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.25rem;
+
+  @media (prefers-reduced-motion: no-preference) {
+    animation: cmd-editor-enter 180ms ease both;
+  }
+}
+
+.ns__editor-card {
+  background: color-mix(in srgb, var(--color-surface) 150%, transparent);
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+}
+

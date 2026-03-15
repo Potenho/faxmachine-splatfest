@@ -1,0 +1,71 @@
+<div class="cmd-form" [formGroup]="form">
+
+  <!-- Speaker + Emotion row -->
+  <div class="cmd-form__row">
+
+    <div class="field">
+      <span class="field__label" id="srt-speaker-label">
+        {{ 'editor.newsScript.commandEditor.fields.speaker' | transloco }}
+      </span>
+      <div class="speaker-picker" role="radiogroup" aria-labelledby="srt-speaker-label">
+        @for (idol of idolValues; track idol) {
+          <label [class]="'speaker-picker__option speaker-picker__option--' + idol">
+            <input type="radio" class="speaker-picker__input" [value]="idol" formControlName="Speaker" />
+            <span class="speaker-picker__label">
+              {{ 'editor.newsScript.commandEditor.speakers.' + idol | transloco }}
+            </span>
+          </label>
+        }
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="field__label" for="srt-emotion">
+        {{ 'editor.newsScript.commandEditor.fields.emotion' | transloco }}
+      </label>
+      <select id="srt-emotion" class="field__select" formControlName="Emotion">
+        @for (emotion of emotionValues; track emotion) {
+          <option [value]="emotion">
+            {{ 'editor.newsScript.commandEditor.emotions.' + emotion | transloco }}
+          </option>
+        }
+      </select>
+    </div>
+
+  </div>
+
+  <!-- Text -->
+  <div class="field">
+    <label class="field__label" for="srt-text">
+      {{ 'editor.newsScript.commandEditor.fields.text' | transloco }}
+    </label>
+    <textarea
+      id="srt-text"
+      class="field__input cmd-form__textarea"
+      formControlName="Text"
+      rows="3">
+    </textarea>
+  </div>
+
+  <!-- Toggles (color follows speaker) -->
+  <div
+    class="cmd-form__toggles cmd-form__toggles--row"
+    [style.--toggle-accent]="speakerCssColor()">
+    <label class="toggle">
+      <input type="checkbox" class="toggle__input" formControlName="WaitButton" />
+      <span class="toggle__label">
+        {{ 'editor.newsScript.commandEditor.fields.waitButton' | transloco }}
+      </span>
+      <span class="toggle__track" aria-hidden="true"></span>
+    </label>
+
+    <label class="toggle">
+      <input type="checkbox" class="toggle__input" formControlName="Skip" />
+      <span class="toggle__label">
+        {{ 'editor.newsScript.commandEditor.fields.skip' | transloco }}
+      </span>
+      <span class="toggle__track" aria-hidden="true"></span>
+    </label>
+  </div>
+
+</div>

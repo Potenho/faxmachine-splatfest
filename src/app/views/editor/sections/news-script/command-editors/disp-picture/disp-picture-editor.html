@@ -1,0 +1,16 @@
+<div class="cmd-form" [formGroup]="form">
+
+  <div class="field">
+    <label class="field__label" for="dp-picture">
+      {{ 'editor.newsScript.commandEditor.fields.picture' | transloco }}
+    </label>
+    <select id="dp-picture" class="field__select" formControlName="Picture">
+      @for (pic of pictureValues; track pic) {
+        <option [value]="pic">
+          {{ 'editor.newsScript.commandEditor.pictureTypes.' + pic | transloco }}
+        </option>
+      }
+    </select>
+  </div>
+
+</div>

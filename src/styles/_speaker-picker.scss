@@ -1,0 +1,115 @@
+// ─── Speaker Picker ───────────────────────────────────────────────────────────
+// Custom radio-button style selector for idol speakers.
+// Usage:
+//   <div class="field">
+//     <span class="field__label" id="<id>-label">Label</span>
+//     <div class="speaker-picker" role="radiogroup" aria-labelledby="<id>-label">
+//       @for (idol of idolValues; track idol) {
+//         <label [class]="'speaker-picker__option speaker-picker__option--' + idol">
+//           <input type="radio" class="speaker-picker__input" [value]="idol" formControlName="Speaker" />
+//           <span class="speaker-picker__label">...</span>
+//         </label>
+//       }
+//     </div>
+//   </div>
+
+.speaker-picker {
+  display: flex;
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background: var(--color-surface);
+  margin-top: 0.25rem;
+}
+
+.speaker-picker__input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.speaker-picker__option {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0.5rem;
+  cursor: pointer;
+  border-right: 1px solid var(--color-border);
+  transition: background 150ms;
+
+  &:last-child {
+    border-right: none;
+  }
+
+}
+
+.speaker-picker__label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  transition: color 150ms;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+// ─── Per-speaker colors ────────────────────────────────────────────────────────
+
+.speaker-picker__option--cIdolLeft {
+  &:hover {
+    background: color-mix(in srgb, var(--color-team-alpha) 10%, transparent);
+  }
+
+  &:focus-within {
+    outline: 2px solid var(--color-team-alpha);
+    outline-offset: -2px;
+  }
+
+  &:has(.speaker-picker__input:checked) {
+    background: color-mix(in srgb, var(--color-team-alpha) 18%, transparent);
+
+    .speaker-picker__label {
+      color: var(--color-team-alpha);
+    }
+  }
+}
+
+.speaker-picker__option--cIdolRight {
+  &:hover {
+    background: color-mix(in srgb, var(--color-team-bravo) 10%, transparent);
+  }
+
+  &:focus-within {
+    outline: 2px solid var(--color-team-bravo);
+    outline-offset: -2px;
+  }
+
+  &:has(.speaker-picker__input:checked) {
+    background: color-mix(in srgb, var(--color-team-bravo) 18%, transparent);
+
+    .speaker-picker__label {
+      color: var(--color-team-bravo);
+    }
+  }
+}
+
+.speaker-picker__option--cIdolAll {
+  &:hover {
+    background: color-mix(in srgb, var(--color-team-neutral) 10%, transparent);
+  }
+
+  &:focus-within {
+    outline: 2px solid var(--color-team-neutral);
+    outline-offset: -2px;
+  }
+
+  &:has(.speaker-picker__input:checked) {
+    background: color-mix(in srgb, var(--color-team-neutral) 18%, transparent);
+
+    .speaker-picker__label {
+      color: var(--color-team-neutral);
+    }
+  }
+}

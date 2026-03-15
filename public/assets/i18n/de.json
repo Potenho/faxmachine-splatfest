@@ -104,6 +104,129 @@
           }
         }
       }
+    },
+    "newsScript": {
+      "tabsAriaLabel": "Newsskript-Sektionen",
+      "language": "Sprache",
+      "sections": {
+        "announce": "Ankündigung",
+        "start": "Start",
+        "resultA": "Ergebnis A",
+        "resultB": "Ergebnis B"
+      },
+      "languages": {
+        "EUde": "EU Deutsch",
+        "EUen": "EU Englisch",
+        "EUes": "EU Spanisch",
+        "EUfr": "EU Französisch",
+        "EUit": "EU Italienisch",
+        "JPja": "JP Japanisch",
+        "USen": "US Englisch",
+        "USes": "US Spanisch",
+        "USfr": "US Französisch"
+      },
+      "commandList": {
+        "title": "Befehle",
+        "empty": "Keine Befehle für diesen Abschnitt.",
+        "addCommand": "Befehl hinzufügen",
+        "duplicateCommand": "Befehl duplizieren",
+        "deleteCommand": "Befehl löschen"
+      },
+      "sync": {
+        "copyTo": "Kopieren nach...",
+        "copyToAriaLabel": "Befehle in eine andere Sprache kopieren",
+        "modal": {
+          "title": "Befehle kopieren",
+          "desc": "Überschreibt die Befehle einer anderen Sprache mit den Befehlen der aktuellen Sprache.",
+          "sourceLabel": "Von",
+          "targetLabel": "Nach",
+          "allLanguages": "Alle Sprachen",
+          "cancel": "Abbrechen",
+          "apply": "Kopieren"
+        }
+      },
+      "editorPanel": {
+        "ariaLabel": "Befehlseditor",
+        "placeholder": "Wähle einen Befehl zum Bearbeiten."
+      },
+      "commandEditor": {
+        "typeLabel": "Befehlstyp",
+        "noOptions": "Dieser Befehl hat keine konfigurierbaren Optionen.",
+        "fields": {
+          "speaker": "Sprecher",
+          "emotion": "Emotion",
+          "text": "Text",
+          "waitButton": "Warte-Schaltfläche",
+          "skip": "Überspringen",
+          "skipOptions": {
+            "default": "Default",
+            "allow": "Allow",
+            "deny": "Deny"
+          },
+          "label": "Bezeichnung",
+          "kind": "Art",
+          "picture": "Bild",
+          "mapId": "Karte",
+          "headerType": "Kopfzeilentyp"
+        },
+        "speakers": {
+          "cIdolLeft": "Callie",
+          "cIdolRight": "Marie",
+          "cIdolAll": "Callie & Marie"
+        },
+        "commandTypes": {
+          "SpeakRawText": "Speak (Raw Text)",
+          "ChangeAnimation": "Change Animation",
+          "SpeakMsgLabel": "Speak (Msg Label)",
+          "ClearMsg": "Clear Message",
+          "WaitTelop": "Wait Telop",
+          "CatchIn": "Catch In",
+          "CatchOut": "Catch Out",
+          "TitleIn": "Title In",
+          "TitleOut": "Title Out",
+          "DispDefault": "Display Default",
+          "DispFest": "Display Fest",
+          "DispFixGame": "Display Fix Game",
+          "DispPicture": "Display Picture",
+          "DispMap": "Display Map",
+          "ShowHeader": "Show Header"
+        },
+        "emotions": {
+          "cGreeting": "Greeting",
+          "cSurprised": "Surprised",
+          "cHappy": "Happy",
+          "cNormalTalk": "Normal",
+          "cFeed": "Feed",
+          "cAngry": "Angry",
+          "cBored": "Bored",
+          "cWait": "Wait"
+        },
+        "dispFestOptions": {
+          "cFaxIn": "Fax In",
+          "cFaxPaper": "Fax Paper",
+          "cFaxOut": "Fax Out",
+          "cFest": "Fest"
+        },
+        "pictureTypes": {
+          "cFirstNewsUFO": "First News UFO",
+          "cFirstNewsCatfish": "First News Catfish",
+          "cMissionEnding": "Mission Ending",
+          "cGachiRelease": "Gachi Release",
+          "cGachiAreaRelease": "Gachi Area Release",
+          "cGachiRideRelease": "Gachi Ride Release",
+          "cGachiGoalRelease": "Gachi Goal Release"
+        },
+        "headerTypes": {
+          "cNone": "None",
+          "cFesAnnounce": "Fest Announce",
+          "cFesEnd": "Fest End",
+          "cStage": "Stage",
+          "cFirstNewsUFO": "First News UFO",
+          "cFirstNewsCatfish": "First News Catfish",
+          "cMissionEnding": "Mission Ending",
+          "cUpdate": "Update"
+        }
+      }
     }
   },
   "home": {

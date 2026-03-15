@@ -104,6 +104,129 @@
           }
         }
       }
+    },
+    "newsScript": {
+      "tabsAriaLabel": "ニュース スクリプト セクション",
+      "language": "言語",
+      "sections": {
+        "announce": "アナウンス",
+        "start": "スタート",
+        "resultA": "結果 A",
+        "resultB": "結果 B"
+      },
+      "languages": {
+        "EUde": "EU ドイツ語",
+        "EUen": "EU 英語",
+        "EUes": "EU スペイン語",
+        "EUfr": "EU フランス語",
+        "EUit": "EU イタリア語",
+        "JPja": "JP 日本語",
+        "USen": "US 英語",
+        "USes": "US スペイン語",
+        "USfr": "US フランス語"
+      },
+      "commandList": {
+        "title": "コマンド",
+        "empty": "このセクションにコマンドはありません。",
+        "addCommand": "コマンドを追加",
+        "duplicateCommand": "コマンドを複製",
+        "deleteCommand": "コマンドを削除"
+      },
+      "sync": {
+        "copyTo": "コピー先...",
+        "copyToAriaLabel": "コマンドを別の言語にコピー",
+        "modal": {
+          "title": "コマンドをコピー",
+          "desc": "現在の言語のコマンドで別の言語のコマンドを上書きします。",
+          "sourceLabel": "コピー元",
+          "targetLabel": "コピー先",
+          "allLanguages": "すべての言語",
+          "cancel": "キャンセル",
+          "apply": "コピー"
+        }
+      },
+      "editorPanel": {
+        "ariaLabel": "コマンドエディター",
+        "placeholder": "編集するコマンドを選択してください。"
+      },
+      "commandEditor": {
+        "typeLabel": "コマンドタイプ",
+        "noOptions": "このコマンドには設定可能なオプションがありません。",
+        "fields": {
+          "speaker": "キャラクター",
+          "emotion": "感情",
+          "text": "テキスト",
+          "waitButton": "待機ボタン",
+          "skip": "スキップ",
+          "skipOptions": {
+            "default": "Default",
+            "allow": "Allow",
+            "deny": "Deny"
+          },
+          "label": "ラベル",
+          "kind": "種類",
+          "picture": "画像",
+          "mapId": "マップ",
+          "headerType": "ヘッダータイプ"
+        },
+        "speakers": {
+          "cIdolLeft": "Callie",
+          "cIdolRight": "Marie",
+          "cIdolAll": "Callie & Marie"
+        },
+        "commandTypes": {
+          "SpeakRawText": "Speak (Raw Text)",
+          "ChangeAnimation": "Change Animation",
+          "SpeakMsgLabel": "Speak (Msg Label)",
+          "ClearMsg": "Clear Message",
+          "WaitTelop": "Wait Telop",
+          "CatchIn": "Catch In",
+          "CatchOut": "Catch Out",
+          "TitleIn": "Title In",
+          "TitleOut": "Title Out",
+          "DispDefault": "Display Default",
+          "DispFest": "Display Fest",
+          "DispFixGame": "Display Fix Game",
+          "DispPicture": "Display Picture",
+          "DispMap": "Display Map",
+          "ShowHeader": "Show Header"
+        },
+        "emotions": {
+          "cGreeting": "Greeting",
+          "cSurprised": "Surprised",
+          "cHappy": "Happy",
+          "cNormalTalk": "Normal",
+          "cFeed": "Feed",
+          "cAngry": "Angry",
+          "cBored": "Bored",
+          "cWait": "Wait"
+        },
+        "dispFestOptions": {
+          "cFaxIn": "Fax In",
+          "cFaxPaper": "Fax Paper",
+          "cFaxOut": "Fax Out",
+          "cFest": "Fest"
+        },
+        "pictureTypes": {
+          "cFirstNewsUFO": "First News UFO",
+          "cFirstNewsCatfish": "First News Catfish",
+          "cMissionEnding": "Mission Ending",
+          "cGachiRelease": "Gachi Release",
+          "cGachiAreaRelease": "Gachi Area Release",
+          "cGachiRideRelease": "Gachi Ride Release",
+          "cGachiGoalRelease": "Gachi Goal Release"
+        },
+        "headerTypes": {
+          "cNone": "None",
+          "cFesAnnounce": "Fest Announce",
+          "cFesEnd": "Fest End",
+          "cStage": "Stage",
+          "cFirstNewsUFO": "First News UFO",
+          "cFirstNewsCatfish": "First News Catfish",
+          "cMissionEnding": "Mission Ending",
+          "cUpdate": "Update"
+        }
+      }
     }
   },
   "home": {

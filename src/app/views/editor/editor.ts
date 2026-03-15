@@ -3,6 +3,7 @@ import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/rou
 import { TranslocoPipe } from '@jsverse/transloco';
 import { APP_VERSION } from '../../common/tokens/app-version.token';
 import { EditorService } from '../../services/splatfest/editor';
+import { FestThemeService } from '../../services/splatfest/fest-theme.service';
 
 @Component({
   selector: 'app-editor',
@@ -15,6 +16,7 @@ import { EditorService } from '../../services/splatfest/editor';
 export class Editor {
   #editorService = inject(EditorService);
   #router = inject(Router);
+  readonly #festTheme = inject(FestThemeService);
 
   readonly version = inject(APP_VERSION);
 

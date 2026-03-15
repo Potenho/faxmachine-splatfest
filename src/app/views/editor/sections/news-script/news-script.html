@@ -1,0 +1,283 @@
+<div class="ns">
+
+  <!-- Section tabs -->
+  <div class="ns__tabs" role="tablist" [attr.aria-label]="'editor.newsScript.tabsAriaLabel' | transloco">
+    @for (section of sections; track section) {
+      <button
+        role="tab"
+        class="ns__tab"
+        [class.ns__tab--active]="activeSection() === section"
+        [attr.aria-selected]="activeSection() === section"
+        (click)="selectSection(section)">
+        {{ sectionI18nKey(section) | transloco }}
+      </button>
+    }
+  </div>
+
+  <!-- Language & sync bar -->
+  <div class="ns__lang-sync-bar">
+    <div class="field">
+      <label class="field__label" for="ns-lang">
+        {{ 'editor.newsScript.language' | transloco }}
+      </label>
+      <select
+        id="ns-lang"
+        class="field__select"
+        (change)="selectLanguage($any($event.target).value)">
+        @for (lang of languages; track lang) {
+          <option [value]="lang" [selected]="activeLanguage() === lang">
+            {{ 'editor.newsScript.languages.' + lang | transloco }}
+          </option>
+        }
+      </select>
+    </div>
+
+    <div class="ns__sync-actions">
+      <button
+        type="button"
+        class="ns__sync-btn"
+        [attr.aria-label]="'editor.newsScript.sync.copyToAriaLabel' | transloco"
+        (click)="openSyncModal()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M8 7H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3"/>
+          <polyline points="15 3 12 6 9 3"/>
+          <line x1="12" y1="6" x2="12" y2="13"/>
+        </svg>
+        {{ 'editor.newsScript.sync.copyTo' | transloco }}
+      </button>
+    </div>
+  </div>
+
+  <!-- Sync dialog -->
+  <dialog
+    #syncDialog
+    class="ns__sync-dialog"
+    [attr.aria-label]="'editor.newsScript.sync.modal.title' | transloco"
+    (click)="onSyncDialogClick($event)">
+    <div class="ns__sync-dialog-inner">
+      <div class="ns__sync-dialog-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M8 7H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3"/>
+          <polyline points="15 3 12 6 9 3"/>
+          <line x1="12" y1="6" x2="12" y2="13"/>
+        </svg>
+      </div>
+      <h3 class="ns__sync-dialog-title">{{ 'editor.newsScript.sync.modal.title' | transloco }}</h3>
+      <p class="ns__sync-dialog-desc">{{ 'editor.newsScript.sync.modal.desc' | transloco }}</p>
+
+      <div class="field">
+        <label class="field__label" for="ns-sync-source">
+          {{ 'editor.newsScript.sync.modal.sourceLabel' | transloco }}
+        </label>
+        <select id="ns-sync-source" class="field__select" disabled>
+          <option>{{ 'editor.newsScript.languages.' + activeLanguage() | transloco }}</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label class="field__label" for="ns-sync-target">
+          {{ 'editor.newsScript.sync.modal.targetLabel' | transloco }}
+        </label>
+        <select
+          id="ns-sync-target"
+          class="field__select"
+          (change)="syncTarget.set($any($event.target).value)">
+          <option value="__all__" [selected]="syncTarget() === '__all__'">
+            {{ 'editor.newsScript.sync.modal.allLanguages' | transloco }}
+          </option>
+          @for (lang of languages; track lang) {
+            @if (lang !== activeLanguage()) {
+              <option [value]="lang" [selected]="syncTarget() === lang">
+                {{ 'editor.newsScript.languages.' + lang | transloco }}
+              </option>
+            }
+          }
+        </select>
+      </div>
+
+      <div class="ns__sync-dialog-actions">
+        <button type="button" class="ns__sync-dialog-btn ns__sync-dialog-btn--cancel" (click)="closeSyncModal()">
+          {{ 'editor.newsScript.sync.modal.cancel' | transloco }}
+        </button>
+        <button type="button" class="ns__sync-dialog-btn ns__sync-dialog-btn--apply" (click)="applySyncCopy()">
+          {{ 'editor.newsScript.sync.modal.apply' | transloco }}
+        </button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Split panel -->
+  <div class="ns__split">
+
+    <!-- Command list -->
+    <aside class="ns__commands">
+      <div class="ns__commands-header">
+        <span class="ns__commands-title">{{ 'editor.newsScript.commandList.title' | transloco }}</span>
+        <span class="ns__commands-badge">{{ activeCommands().length }}</span>
+      </div>
+
+      <ul #commandList class="ns__command-list" role="listbox" [attr.aria-label]="'editor.newsScript.commandList.title' | transloco">
+        @for (cmd of activeCommands(); track $index) {
+          @let isSpeaker = isSpeakRawText(cmd);
+          @let isNoop = isNoOptions(cmd);
+          @let speaker = isSpeaker ? speakerOf(cmd) : null;
+          <li
+            class="ns__command-item"
+            [class.ns__command-item--speak]="isSpeaker"
+            [class.ns__command-item--no-options]="isNoop"
+            [class]="isSpeaker ? 'ns__command-item--' + speaker : ''"
+            [class.ns__command-item--selected]="selectedIndex() === $index"
+            role="option"
+            [attr.aria-selected]="selectedIndex() === $index"
+            (click)="selectCommand($index, $event)">
+            <span class="ns__command-index">{{ $index }}</span>
+            <span class="ns__command-body">
+              @if (isSpeaker) {
+                <span class="ns__command-label">
+                  <span class="ns__command-speaker ns__command-speaker--{{ speakerOf(cmd) }}">{{ speakerLabel(cmd) }}</span>: {{ cmd.Text }}
+                </span>
+              } @else if (isNoop) {
+                <span class="ns__command-label ns__command-label--no-options">{{ noOptionsI18nKey(cmd) | transloco }}</span>
+              } @else {
+                <span class="ns__command-label">{{ commandLabel(cmd) }}</span>
+              }
+              @if (isSpeakRawText(cmd)) {
+                <span class="ns__command-badges">
+                  <span class="ns__badge ns__badge--emotion">{{ emotionLabel(cmd.Emotion) }}</span>
+                  @if (cmd.WaitButton) {
+                    <span class="ns__badge ns__badge--wait">Wait</span>
+                  }
+                  @if (cmd.Skip === false) {
+                    <span class="ns__badge ns__badge--noskip">No Skip</span>
+                  }
+                </span>
+              }
+            </span>
+            <div class="ns__command-actions">
+              <button
+                type="button"
+                class="ns__command-action-btn ns__command-action-btn--duplicate"
+                [attr.aria-label]="'editor.newsScript.commandList.duplicateCommand' | transloco"
+                (click)="duplicateCommand($index)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="8" y="8" width="13" height="13" rx="2"/>
+                  <path d="M3 16V5a2 2 0 0 1 2-2h11"/>
+                </svg>
+              </button>
+              <button
+                type="button"
+                class="ns__command-action-btn ns__command-action-btn--delete"
+                [attr.aria-label]="'editor.newsScript.commandList.deleteCommand' | transloco"
+                (click)="deleteCommand($index)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="3 6 5 6 21 6"/>
+                  <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/>
+                  <path d="M10 11v6M14 11v6"/>
+                  <path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/>
+                </svg>
+              </button>
+            </div>
+          </li>
+        } @empty {
+          <li class="ns__command-empty">
+            {{ 'editor.newsScript.commandList.empty' | transloco }}
+          </li>
+        }
+      </ul>
+
+      <div class="ns__commands-footer">
+        <button
+          type="button"
+          class="ns__command-add-btn"
+          (click)="addCommand()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+          {{ 'editor.newsScript.commandList.addCommand' | transloco }}
+        </button>
+      </div>
+
+    </aside>
+
+    <!-- Editor panel -->
+    <section class="ns__editor" [attr.aria-label]="'editor.newsScript.editorPanel.ariaLabel' | transloco">
+      @if (selectedCommand(); as cmd) {
+        @for (v of [selectionVersion()]; track v) {
+
+        <div class="ns__editor-content">
+
+          <!-- Command type selector -->
+          <div class="field">
+            <label class="field__label" for="ns-cmd-type">
+              {{ 'editor.newsScript.commandEditor.typeLabel' | transloco }}
+            </label>
+            <select
+              id="ns-cmd-type"
+              class="field__select"
+              [value]="cmd.Command"
+              (change)="changeCommandType($any($event.target).value)">
+              @for (type of commandTypes; track type) {
+                <option [value]="type">
+                  {{ 'editor.newsScript.commandEditor.commandTypes.' + type | transloco }}
+                </option>
+              }
+            </select>
+          </div>
+
+          <!-- Command options card -->
+          <div class="ns__editor-card">
+            @switch (cmd.Command) {
+              @case ('SpeakRawText') {
+                <app-speak-raw-text-editor
+                  [command]="asSpeakRawText(cmd)"
+                  (commandChange)="onCommandChange($event)" />
+              }
+              @case ('ChangeAnimation') {
+                <app-change-animation-editor
+                  [command]="asChangeAnimation(cmd)"
+                  (commandChange)="onCommandChange($event)" />
+              }
+              @case ('SpeakMsgLabel') {
+                <app-speak-msg-label-editor
+                  [command]="asSpeakMsgLabel(cmd)"
+                  (commandChange)="onCommandChange($event)" />
+              }
+              @case ('DispFest') {
+                <app-disp-fest-editor
+                  [command]="asDispFest(cmd)"
+                  (commandChange)="onCommandChange($event)" />
+              }
+              @case ('DispPicture') {
+                <app-disp-picture-editor
+                  [command]="asDispPicture(cmd)"
+                  (commandChange)="onCommandChange($event)" />
+              }
+              @case ('DispMap') {
+                <app-disp-map-editor
+                  [command]="asDispMap(cmd)"
+                  (commandChange)="onCommandChange($event)" />
+              }
+              @case ('ShowHeader') {
+                <app-show-header-editor
+                  [command]="asShowHeader(cmd)"
+                  (commandChange)="onCommandChange($event)" />
+              }
+              @default {
+                <app-no-options-editor [commandName]="cmd.Command" />
+              }
+            }
+          </div>
+
+        </div>
+
+        } <!-- @for -->
+      } @else {
+        <p class="ns__editor-placeholder">
+          {{ 'editor.newsScript.editorPanel.placeholder' | transloco }}
+        </p>
+      }
+    </section>
+
+  </div>
+</div>

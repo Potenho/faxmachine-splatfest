@@ -104,6 +104,129 @@
           }
         }
       }
+    },
+    "newsScript": {
+      "tabsAriaLabel": "Sections du script de nouvelles",
+      "language": "Langue",
+      "sections": {
+        "announce": "Annonce",
+        "start": "Début",
+        "resultA": "Résultat A",
+        "resultB": "Résultat B"
+      },
+      "languages": {
+        "EUde": "EU Allemand",
+        "EUen": "EU Anglais",
+        "EUes": "EU Espagnol",
+        "EUfr": "EU Français",
+        "EUit": "EU Italien",
+        "JPja": "JP Japonais",
+        "USen": "US Anglais",
+        "USes": "US Espagnol",
+        "USfr": "US Français"
+      },
+      "commandList": {
+        "title": "Commandes",
+        "empty": "Aucune commande pour cette section.",
+        "addCommand": "Ajouter une Commande",
+        "duplicateCommand": "Dupliquer la commande",
+        "deleteCommand": "Supprimer la commande"
+      },
+      "sync": {
+        "copyTo": "Copier vers...",
+        "copyToAriaLabel": "Copier les commandes vers une autre langue",
+        "modal": {
+          "title": "Copier les commandes",
+          "desc": "Écrase les commandes d'une autre langue avec les commandes de la langue actuelle.",
+          "sourceLabel": "De",
+          "targetLabel": "Vers",
+          "allLanguages": "Toutes les langues",
+          "cancel": "Annuler",
+          "apply": "Copier"
+        }
+      },
+      "editorPanel": {
+        "ariaLabel": "Éditeur de commandes",
+        "placeholder": "Sélectionnez une commande à éditer."
+      },
+      "commandEditor": {
+        "typeLabel": "Type de commande",
+        "noOptions": "Cette commande n'a pas d'options configurables.",
+        "fields": {
+          "speaker": "Personnage",
+          "emotion": "Émotion",
+          "text": "Texte",
+          "waitButton": "Bouton d'attente",
+          "skip": "Sauter",
+          "skipOptions": {
+            "default": "Default",
+            "allow": "Allow",
+            "deny": "Deny"
+          },
+          "label": "Étiquette",
+          "kind": "Type",
+          "picture": "Image",
+          "mapId": "Carte",
+          "headerType": "Type d'en-tête"
+        },
+        "speakers": {
+          "cIdolLeft": "Callie",
+          "cIdolRight": "Marie",
+          "cIdolAll": "Callie & Marie"
+        },
+        "commandTypes": {
+          "SpeakRawText": "Speak (Raw Text)",
+          "ChangeAnimation": "Change Animation",
+          "SpeakMsgLabel": "Speak (Msg Label)",
+          "ClearMsg": "Clear Message",
+          "WaitTelop": "Wait Telop",
+          "CatchIn": "Catch In",
+          "CatchOut": "Catch Out",
+          "TitleIn": "Title In",
+          "TitleOut": "Title Out",
+          "DispDefault": "Display Default",
+          "DispFest": "Display Fest",
+          "DispFixGame": "Display Fix Game",
+          "DispPicture": "Display Picture",
+          "DispMap": "Display Map",
+          "ShowHeader": "Show Header"
+        },
+        "emotions": {
+          "cGreeting": "Greeting",
+          "cSurprised": "Surprised",
+          "cHappy": "Happy",
+          "cNormalTalk": "Normal",
+          "cFeed": "Feed",
+          "cAngry": "Angry",
+          "cBored": "Bored",
+          "cWait": "Wait"
+        },
+        "dispFestOptions": {
+          "cFaxIn": "Fax In",
+          "cFaxPaper": "Fax Paper",
+          "cFaxOut": "Fax Out",
+          "cFest": "Fest"
+        },
+        "pictureTypes": {
+          "cFirstNewsUFO": "First News UFO",
+          "cFirstNewsCatfish": "First News Catfish",
+          "cMissionEnding": "Mission Ending",
+          "cGachiRelease": "Gachi Release",
+          "cGachiAreaRelease": "Gachi Area Release",
+          "cGachiRideRelease": "Gachi Ride Release",
+          "cGachiGoalRelease": "Gachi Goal Release"
+        },
+        "headerTypes": {
+          "cNone": "None",
+          "cFesAnnounce": "Fest Announce",
+          "cFesEnd": "Fest End",
+          "cStage": "Stage",
+          "cFirstNewsUFO": "First News UFO",
+          "cFirstNewsCatfish": "First News Catfish",
+          "cMissionEnding": "Mission Ending",
+          "cUpdate": "Update"
+        }
+      }
     }
   },
   "home": {

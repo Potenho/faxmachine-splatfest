@@ -1,5 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, DestroyRef, ElementRef, inject, signal, viewChild } from '@angular/core';
-
+import { ChangeDetectionStrategy, Component, computed, DestroyRef, inject, signal, viewChild } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { NgOptimizedImage } from '@angular/common';
@@ -7,10 +6,11 @@ import { TranslocoPipe } from '@jsverse/transloco';
 import { REGULAR_STAGES } from '../../../../../../common/tokens/regular-stages';
 import { EditorService } from '../../../../../../services/splatfest/editor';
 import { SplatfestRules } from '../../../../../../services/splatfest/types/splatfest-model';
+import { StagePickerModal } from '../../../../../../common/components/stage-picker-modal/stage-picker-modal';
 
 @Component({
   selector: 'app-rotation-category',
-  imports: [TranslocoPipe, NgOptimizedImage, ReactiveFormsModule],
+  imports: [TranslocoPipe, NgOptimizedImage, ReactiveFormsModule, StagePickerModal],
   templateUrl: './rotation-category.html',
   styleUrl: './rotation-category.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -25,12 +25,11 @@ export class RotationCategory {
   readonly canAddMore = computed(() => this.stages().length < 3);
   readonly canRemove = computed(() => this.stages().length > 1);
 
-  readonly showModal = signal(false);
   readonly editingIndex = signal<number | null>(null);
 
   readonly ruleControl = new FormControl<SplatfestRules>(SplatfestRules.TurfWars, { nonNullable: true });
 
-  private readonly stageDialog = viewChild.required<ElementRef<HTMLDialogElement>>('stageDialog');
+  protected readonly stagePicker = viewChild.required(StagePickerModal);
 
   constructor() {
     const rotation = this.#editorService.festRotation();
@@ -47,28 +46,12 @@ export class RotationCategory {
 
   openModalForEdit(index: number): void {
     this.editingIndex.set(index);
-    this.showModal.set(true);
-    this.stageDialog().nativeElement.showModal();
+    this.stagePicker().open();
   }
 
   openModalForAdd(): void {
     this.editingIndex.set(null);
-    this.showModal.set(true);
-    this.stageDialog().nativeElement.showModal();
-  }
-
-  closeModal(): void {
-    this.showModal.set(false);
-    const dialog = this.stageDialog();
-    if (dialog.nativeElement.open) {
-      dialog.nativeElement.close();
-    }
-  }
-
-  onDialogBackdropClick(event: MouseEvent): void {
-    if (event.target === this.stageDialog().nativeElement) {
-      this.closeModal();
-    }
+    this.stagePicker().open();
   }
 
   selectStage(id: number): void {
@@ -83,7 +66,6 @@ export class RotationCategory {
       }
       return { ...prev, Stages: stages };
     });
-    this.closeModal();
   }
 
   removeStage(index: number, event: Event): void {

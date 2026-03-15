@@ -104,6 +104,129 @@
           }
         }
       }
+    },
+    "newsScript": {
+      "tabsAriaLabel": "News script sections",
+      "language": "Language",
+      "sections": {
+        "announce": "Announce",
+        "start": "Start",
+        "resultA": "Result A",
+        "resultB": "Result B"
+      },
+      "languages": {
+        "EUde": "EU German",
+        "EUen": "EU English",
+        "EUes": "EU Spanish",
+        "EUfr": "EU French",
+        "EUit": "EU Italian",
+        "JPja": "JP Japanese",
+        "USen": "US English",
+        "USes": "US Spanish",
+        "USfr": "US French"
+      },
+      "commandList": {
+        "title": "Commands",
+        "empty": "No commands for this section.",
+        "addCommand": "Add Command",
+        "duplicateCommand": "Duplicate command",
+        "deleteCommand": "Delete command"
+      },
+      "sync": {
+        "copyTo": "Copy to...",
+        "copyToAriaLabel": "Copy commands to another language",
+        "modal": {
+          "title": "Copy Commands",
+          "desc": "Overwrite commands in another language with the current language's commands.",
+          "sourceLabel": "From",
+          "targetLabel": "To",
+          "allLanguages": "All languages",
+          "cancel": "Cancel",
+          "apply": "Copy"
+        }
+      },
+      "editorPanel": {
+        "ariaLabel": "Command editor",
+        "placeholder": "Select a command to edit."
+      },
+      "commandEditor": {
+        "typeLabel": "Command Type",
+        "noOptions": "This command has no configurable options.",
+        "fields": {
+          "speaker": "Speaker",
+          "emotion": "Emotion",
+          "text": "Text",
+          "waitButton": "Wait Button",
+          "skip": "Skip",
+          "skipOptions": {
+            "default": "Default",
+            "allow": "Allow",
+            "deny": "Deny"
+          },
+          "label": "Label",
+          "kind": "Kind",
+          "picture": "Picture",
+          "mapId": "Map ID",
+          "headerType": "Header Type"
+        },
+        "speakers": {
+          "cIdolLeft": "Callie",
+          "cIdolRight": "Marie",
+          "cIdolAll": "Callie & Marie"
+        },
+        "commandTypes": {
+          "SpeakRawText": "Speak (Raw Text)",
+          "ChangeAnimation": "Change Animation",
+          "SpeakMsgLabel": "Speak (Msg Label)",
+          "ClearMsg": "Clear Message",
+          "WaitTelop": "Wait Telop",
+          "CatchIn": "Catch In",
+          "CatchOut": "Catch Out",
+          "TitleIn": "Title In",
+          "TitleOut": "Title Out",
+          "DispDefault": "Display Default",
+          "DispFest": "Display Fest",
+          "DispFixGame": "Display Fix Game",
+          "DispPicture": "Display Picture",
+          "DispMap": "Display Map",
+          "ShowHeader": "Show Header"
+        },
+        "emotions": {
+          "cGreeting": "Greeting",
+          "cSurprised": "Surprised",
+          "cHappy": "Happy",
+          "cNormalTalk": "Normal",
+          "cFeed": "Feed",
+          "cAngry": "Angry",
+          "cBored": "Bored",
+          "cWait": "Wait"
+        },
+        "dispFestOptions": {
+          "cFaxIn": "Fax In",
+          "cFaxPaper": "Fax Paper",
+          "cFaxOut": "Fax Out",
+          "cFest": "Fest"
+        },
+        "pictureTypes": {
+          "cFirstNewsUFO": "First News UFO",
+          "cFirstNewsCatfish": "First News Catfish",
+          "cMissionEnding": "Mission Ending",
+          "cGachiRelease": "Gachi Release",
+          "cGachiAreaRelease": "Gachi Area Release",
+          "cGachiRideRelease": "Gachi Ride Release",
+          "cGachiGoalRelease": "Gachi Goal Release"
+        },
+        "headerTypes": {
+          "cNone": "None",
+          "cFesAnnounce": "Fest Announce",
+          "cFesEnd": "Fest End",
+          "cStage": "Stage",
+          "cFirstNewsUFO": "First News UFO",
+          "cFirstNewsCatfish": "First News Catfish",
+          "cMissionEnding": "Mission Ending",
+          "cUpdate": "Update"
+        }
+      }
     }
   },
   "home": {

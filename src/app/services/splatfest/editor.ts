@@ -2,6 +2,8 @@ import { computed, inject, Injectable, signal } from "@angular/core";
 import { SplatfestFileService } from "./splatfest-file";
 import { SplatfestEtcParams, SplatfestModel, SplatfestNewsScript, SplatfestRotation, SplatfestTeams, SplatfestTime } from "./types/splatfest-model";
 import { Languages } from "./types/languages";
+import { AnyNewsCommands } from "./types/news-commands";
+import { NewsSections } from "./types/news-sectios";
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +30,90 @@ export class EditorService {
   async initializeFromTemplate() {
     const splatfestModel = await this.#splatfestFile.getTemplateFile();
     this.#setSplatfestParts(splatfestModel);
+  }
+
+  updateCommand(section: NewsSections, language: Languages, index: number, command: AnyNewsCommands): void {
+    this.festNewsScript.update(current => {
+      if (!current) return current;
+      const updatedNews = current.News.map(newsSection => {
+        if (newsSection.NewsType !== section) return newsSection;
+        const commands = [...newsSection[language]];
+        commands[index] = command;
+        return { ...newsSection, [language]: commands };
+      }) as SplatfestNewsScript['News'];
+      return { News: updatedNews };
+    });
+  }
+
+  addCommand(section: NewsSections, language: Languages, command: AnyNewsCommands): void {
+    this.festNewsScript.update(current => {
+      if (!current) return current;
+      const updatedNews = current.News.map(newsSection => {
+        if (newsSection.NewsType !== section) return newsSection;
+        const commands = [...(newsSection[language] ?? []), command];
+        return { ...newsSection, [language]: commands };
+      }) as SplatfestNewsScript['News'];
+      return { News: updatedNews };
+    });
+  }
+
+  duplicateCommand(section: NewsSections, language: Languages, index: number): void {
+    this.festNewsScript.update(current => {
+      if (!current) return current;
+      const updatedNews = current.News.map(newsSection => {
+        if (newsSection.NewsType !== section) return newsSection;
+        const commands = [...newsSection[language]];
+        commands.splice(index + 1, 0, { ...commands[index] });
+        return { ...newsSection, [language]: commands };
+      }) as SplatfestNewsScript['News'];
+      return { News: updatedNews };
+    });
+  }
+
+  deleteCommand(section: NewsSections, language: Languages, index: number): void {
+    this.festNewsScript.update(current => {
+      if (!current) return current;
+      const updatedNews = current.News.map(newsSection => {
+        if (newsSection.NewsType !== section) return newsSection;
+        const commands = [...newsSection[language]];
+        commands.splice(index, 1);
+        return { ...newsSection, [language]: commands };
+      }) as SplatfestNewsScript['News'];
+      return { News: updatedNews };
+    });
+  }
+
+  copyLanguage(section: NewsSections, source: Languages, target: Languages): void {
+    this.festNewsScript.update(current => {
+      if (!current) return current;
+      const sourceSection = current.News.find(n => n.NewsType === section);
+      if (!sourceSection) return current;
+      const commands = (sourceSection[source] ?? []).map(c => ({ ...c }));
+      const updatedNews = current.News.map(newsSection => {
+        if (newsSection.NewsType !== section) return newsSection;
+        return { ...newsSection, [target]: commands };
+      }) as SplatfestNewsScript['News'];
+      return { News: updatedNews };
+    });
+  }
+
+  copyLanguageToAll(section: NewsSections, source: Languages): void {
+    this.festNewsScript.update(current => {
+      if (!current) return current;
+      const sourceSection = current.News.find(n => n.NewsType === section);
+      if (!sourceSection) return current;
+      const sourceCommands = (sourceSection[source] ?? []).map(c => ({ ...c }));
+      const updatedNews = current.News.map(newsSection => {
+        if (newsSection.NewsType !== section) return newsSection;
+        const overrides = Object.fromEntries(
+          Object.values(Languages)
+            .filter(lang => lang !== source)
+            .map(lang => [lang, sourceCommands.map(c => ({ ...c }))])
+        );
+        return { ...newsSection, ...overrides };
+      }) as SplatfestNewsScript['News'];
+      return { News: updatedNews };
+    });
   }
 
   closeEditor() {

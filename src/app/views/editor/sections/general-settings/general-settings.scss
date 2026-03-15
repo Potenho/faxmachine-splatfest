@@ -34,10 +34,15 @@
 // ─── Card ─────────────────────────────────────────────────────────────────────
 
 .gs-card {
+  --gs-accent: var(--color-team-neutral);
   background: color-mix(in srgb, var(--color-surface) 200%, transparent);
   border: 1px solid var(--color-border);
   border-radius: 1rem;
   overflow: hidden;
+
+  &--alpha   { --gs-accent: var(--color-team-alpha); }
+  &--bravo   { --gs-accent: var(--color-team-bravo); }
+  &--neutral { --gs-accent: var(--color-team-neutral); }
 
   @media (max-width: 480px) {
     border-radius: 0.875rem;
@@ -52,14 +57,14 @@
   gap: 0.625rem;
   padding: 0.875rem 1.25rem;
   border-bottom: 1px solid var(--color-border);
-  background: color-mix(in srgb, var(--color-primary) 7%, transparent);
+  background: color-mix(in srgb, var(--gs-accent) 7%, transparent);
 }
 
 .gs-card__icon {
   width: 1rem;
   height: 1rem;
   flex-shrink: 0;
-  color: var(--color-primary-light);
+  color: var(--gs-accent);
 }
 
 .gs-card__title {

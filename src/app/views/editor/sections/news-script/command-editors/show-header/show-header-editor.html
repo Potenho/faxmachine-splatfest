@@ -1,0 +1,16 @@
+<div class="cmd-form" [formGroup]="form">
+
+  <div class="field">
+    <label class="field__label" for="sh-type">
+      {{ 'editor.newsScript.commandEditor.fields.headerType' | transloco }}
+    </label>
+    <select id="sh-type" class="field__select" formControlName="Type">
+      @for (type of headerValues; track type) {
+        <option [value]="type">
+          {{ 'editor.newsScript.commandEditor.headerTypes.' + type | transloco }}
+        </option>
+      }
+    </select>
+  </div>
+
+</div>

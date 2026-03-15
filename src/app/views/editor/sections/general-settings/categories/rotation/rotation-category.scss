@@ -265,46 +265,49 @@
   @include focus-ring();
 }
 
-// ─── Stage picker modal ───────────────────────────────────────────────────────
-
-.stage-modal-backdrop {
-  position: fixed;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.72);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  padding: 1rem;
-  z-index: 200;
-
-  @media (prefers-reduced-motion: no-preference) {
-    animation: rotation-backdrop-enter 0.2s ease both;
-  }
-}
+// ─── Stage picker dialog ──────────────────────────────────────────────────────
+// Uses <dialog> element (top-layer) — not affected by ancestor overflow/transform
 
 .stage-modal {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-  width: 100%;
-  max-width: 640px;
-  max-height: 85dvh;
-  padding: 1.5rem;
-  background: #0e0c18;
+  // Reset browser dialog defaults
   border: 1px solid var(--color-border);
-  border-radius: 1.25rem;
-  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5);
+  padding: 0;
+  background: transparent;
+  outline: none;
+  // Closed state: hidden
+  display: none;
 
-  @media (prefers-reduced-motion: no-preference) {
-    animation: rotation-modal-enter 0.22s 0.04s ease both;
+  &[open] {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    width: min(640px, calc(100vw - 2rem));
+    max-height: 85dvh;
+    padding: 1.5rem;
+    background: #0e0c18;
+    border-radius: 1.25rem;
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5);
+    margin: auto;
+
+    @media (prefers-reduced-motion: no-preference) {
+      animation: rotation-modal-enter 0.22s 0.04s ease both;
+    }
+
+    @media (max-width: 480px) {
+      max-height: 92dvh;
+      padding: 1.25rem;
+      border-radius: 1rem;
+    }
   }
 
-  @media (max-width: 480px) {
-    max-height: 92dvh;
-    padding: 1.25rem;
-    border-radius: 1rem;
+  &::backdrop {
+    background: rgba(0, 0, 0, 0.72);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+
+    @media (prefers-reduced-motion: no-preference) {
+      animation: rotation-backdrop-enter 0.2s ease both;
+    }
   }
 }
 

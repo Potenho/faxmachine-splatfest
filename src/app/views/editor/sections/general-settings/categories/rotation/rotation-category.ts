@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, computed, DestroyRef, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, DestroyRef, ElementRef, inject, signal, viewChild } from '@angular/core';
+
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { NgOptimizedImage } from '@angular/common';
@@ -13,7 +14,6 @@ import { SplatfestRules } from '../../../../../../services/splatfest/types/splat
   templateUrl: './rotation-category.html',
   styleUrl: './rotation-category.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { '(document:keydown.escape)': 'onModalEscape()' },
 })
 export class RotationCategory {
   readonly #editorService = inject(EditorService);
@@ -29,6 +29,8 @@ export class RotationCategory {
   readonly editingIndex = signal<number | null>(null);
 
   readonly ruleControl = new FormControl<SplatfestRules>(SplatfestRules.TurfWars, { nonNullable: true });
+
+  private readonly stageDialog = viewChild.required<ElementRef<HTMLDialogElement>>('stageDialog');
 
   constructor() {
     const rotation = this.#editorService.festRotation();
@@ -46,19 +48,27 @@ export class RotationCategory {
   openModalForEdit(index: number): void {
     this.editingIndex.set(index);
     this.showModal.set(true);
+    this.stageDialog().nativeElement.showModal();
   }
 
   openModalForAdd(): void {
     this.editingIndex.set(null);
     this.showModal.set(true);
+    this.stageDialog().nativeElement.showModal();
   }
 
   closeModal(): void {
     this.showModal.set(false);
+    const dialog = this.stageDialog();
+    if (dialog.nativeElement.open) {
+      dialog.nativeElement.close();
+    }
   }
 
-  onModalEscape(): void {
-    if (this.showModal()) this.closeModal();
+  onDialogBackdropClick(event: MouseEvent): void {
+    if (event.target === this.stageDialog().nativeElement) {
+      this.closeModal();
+    }
   }
 
   selectStage(id: number): void {

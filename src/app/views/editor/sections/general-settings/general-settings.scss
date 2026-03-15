@@ -1,0 +1,80 @@
+// ─── Host ─────────────────────────────────────────────────────────────────────
+// Flex child of .editor__main — scroll lives here so the grid inside never
+// needs its own overflow and won't create conflicting stacking contexts.
+
+:host {
+  display: block;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+
+  @media (prefers-reduced-motion: no-preference) {
+    animation: page-fade-in 220ms ease both;
+  }
+}
+
+// ─── Grid container ───────────────────────────────────────────────────────────
+
+.gs {
+  padding: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.25rem;
+  align-content: start;
+
+  @media (max-width: 480px) {
+    padding: 0.875rem;
+    gap: 0.875rem;
+    grid-template-columns: 1fr;
+  }
+}
+
+// ─── Card ─────────────────────────────────────────────────────────────────────
+
+.gs-card {
+  background: color-mix(in srgb, var(--color-surface) 200%, transparent);
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  overflow: hidden;
+
+  @media (max-width: 480px) {
+    border-radius: 0.875rem;
+  }
+}
+
+// ─── Card header ──────────────────────────────────────────────────────────────
+
+.gs-card__header {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.875rem 1.25rem;
+  border-bottom: 1px solid var(--color-border);
+  background: color-mix(in srgb, var(--color-primary) 7%, transparent);
+}
+
+.gs-card__icon {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  color: var(--color-primary-light);
+}
+
+.gs-card__title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--color-text);
+}
+
+// ─── Card body ────────────────────────────────────────────────────────────────
+
+.gs-card__body {
+  padding: 1.25rem;
+
+  @media (max-width: 480px) {
+    padding: 1rem;
+  }
+}

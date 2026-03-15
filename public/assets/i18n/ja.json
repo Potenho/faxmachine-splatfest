@@ -1,0 +1,129 @@
+{
+  "editor": {
+    "nav": {
+      "generalSettings": "一般設定",
+      "newsScript": "ニューススクリプト",
+      "teams": "チーム",
+      "general": "一般",
+      "news": "ニュース"
+    },
+    "saveFile": "ファイルを保存",
+    "saveFileAriaLabel": "ファイルを保存",
+    "closeEditor": "エディターを閉じる",
+    "closeEditorAriaLabel": "エディターを閉じる",
+    "closeModal": {
+      "title": "エディターを閉じますか？",
+      "desc": "保存していない変更は失われます。",
+      "cancel": "キャンセル",
+      "saveAndExit": "保存して終了",
+      "exitWithoutSaving": "保存せずに終了"
+    },
+    "generalSettings": {
+      "tabs": {
+        "ariaLabel": "一般設定カテゴリー",
+        "general": "一般",
+        "dates": "日付",
+        "rotation": "ローテーション"
+      },
+      "general": {
+        "festivalId": {
+          "label": "フェスID",
+          "desc": "このSplatfestの固有の数値識別子。"
+        },
+        "battleResultRate": {
+          "label": "バトル結果レート",
+          "desc": "バトル結果の計算に使用するレート。"
+        },
+        "version": {
+          "label": "バージョン",
+          "desc": "ファイル形式のバージョン番号。"
+        },
+        "errorMin": "0以上の数値を入力してください。"
+      },
+      "dates": {
+        "announceDate": {
+          "label": "告知日時",
+          "desc": "Splatfestがプレイヤーに告知される日時。"
+        },
+        "startDate": {
+          "label": "開始日時",
+          "desc": "Splatfestのバトルが始まる日時。"
+        },
+        "endDate": {
+          "label": "終了日時",
+          "desc": "Splatfestのバトルが終わる日時。"
+        },
+        "resultDate": {
+          "label": "結果発表日時",
+          "desc": "結果が発表される日時。"
+        },
+        "errors": {
+          "required": "このフィールドは必須です。",
+          "startNotAfterAnnounce": "開始日時は告知日時より後である必要があります。",
+          "endNotAfterStart": "終了日時は開始日時より後である必要があります。",
+          "resultNotAfterEnd": "結果日時は終了日時より後である必要があります。"
+        }
+      },
+      "rotation": {
+        "rule": {
+          "label": "バトルルール",
+          "desc": "このSplatfestで行われるゲームモード。",
+          "turfWars": "ナワバリバトル",
+          "splatZones": "ガチエリア",
+          "towerControl": "ガチヤグラ",
+          "rainmaker": "ガチホコバトル"
+        },
+        "stages": {
+          "sectionLabel": "ステージ",
+          "sectionDesc": "このSplatfestに使用するステージを1〜3つ選択してください。",
+          "addLabel": "ステージを追加",
+          "editAriaLabel": "ステージを変更",
+          "removeAriaLabel": "ステージを削除",
+          "addAriaLabel": "ステージを追加",
+          "modal": {
+            "title": "ステージを選択",
+            "closeAriaLabel": "ステージ選択を閉じる"
+          },
+          "names": {
+            "0": "デカライン高架下",
+            "1": "Bバスパーク",
+            "2": "ショッツル鉱山",
+            "3": "アロワナモール",
+            "4": "Cシュライン",
+            "5": "タチウオパーキング",
+            "6": "ハコフグ倉庫",
+            "7": "モズク農園",
+            "8": "ネギトロ炭鉱",
+            "9": "ホッケふ頭",
+            "10": "マサバ海峡大橋",
+            "11": "フジツボスポーツクラブ",
+            "12": "キンメダイ美術館",
+            "13": "アンチョビットゲームズ",
+            "14": "ピラニア鉱山",
+            "15": "マヒマヒリゾート&スパ"
+          }
+        }
+      }
+    }
+  },
+  "home": {
+    "subtitle": "Splatoon 1 用の Splatfest ファイルを作成・編集",
+    "card": {
+      "hint": "始め方を選んでください",
+      "openFile": {
+        "label": "ファイルを開く",
+        "desc": ".byaml ファイルをインポート",
+        "ariaLabel": "Splatfest ファイルを開く"
+      },
+      "template": {
+        "label": "テンプレートを使用",
+        "desc": "空の Splatfest から始める"
+      }
+    },
+    "error": {
+      "title": "無効なファイル",
+      "desc": "ファイルを読み込めませんでした。有効な Splatfest ファイルおよび BYAML であること、また破損していないことを確認してください。",
+      "close": "わかった"
+    }
+  }
+}

@@ -1,0 +1,110 @@
+<form class="dates-form" [formGroup]="form" novalidate>
+
+  <!-- Announce Date -->
+  <div class="field">
+    <label class="field__label" for="announce-date">
+      {{ 'editor.generalSettings.dates.announceDate.label' | transloco }}
+    </label>
+    <p class="field__desc">{{ 'editor.generalSettings.dates.announceDate.desc' | transloco }}</p>
+    <input
+      id="announce-date"
+      type="datetime-local"
+      class="field__input"
+      formControlName="Announce"
+      [max]="form.controls.Start.value"
+      [class.field__input--error]="form.controls.Announce.invalid"
+    />
+    @if (form.controls.Announce.hasError('required')) {
+      <p class="field__error" role="alert">
+        {{ 'editor.generalSettings.dates.errors.required' | transloco }}
+      </p>
+    }
+  </div>
+
+  <!-- Start Date -->
+  <div class="field">
+    <label class="field__label" for="start-date">
+      {{ 'editor.generalSettings.dates.startDate.label' | transloco }}
+    </label>
+    <p class="field__desc">{{ 'editor.generalSettings.dates.startDate.desc' | transloco }}</p>
+    <input
+      id="start-date"
+      type="datetime-local"
+      class="field__input"
+      formControlName="Start"
+      [min]="form.controls.Announce.value"
+      [max]="form.controls.End.value"
+      [class.field__input--error]="
+        (form.controls.Start.invalid) ||
+        (form.errors?.['startNotAfterAnnounce'])
+      "
+    />
+    @if (form.controls.Start.hasError('required')) {
+      <p class="field__error" role="alert">
+        {{ 'editor.generalSettings.dates.errors.required' | transloco }}
+      </p>
+    } @else if (form.errors?.['startNotAfterAnnounce']) {
+      <p class="field__error" role="alert">
+        {{ 'editor.generalSettings.dates.errors.startNotAfterAnnounce' | transloco }}
+      </p>
+    }
+  </div>
+
+  <!-- End Date -->
+  <div class="field">
+    <label class="field__label" for="end-date">
+      {{ 'editor.generalSettings.dates.endDate.label' | transloco }}
+    </label>
+    <p class="field__desc">{{ 'editor.generalSettings.dates.endDate.desc' | transloco }}</p>
+    <input
+      id="end-date"
+      type="datetime-local"
+      class="field__input"
+      formControlName="End"
+      [min]="form.controls.Start.value"
+      [max]="form.controls.Result.value"
+      [class.field__input--error]="
+        (form.controls.End.invalid) ||
+        (form.errors?.['endNotAfterStart'])
+      "
+    />
+    @if (form.controls.End.hasError('required')) {
+      <p class="field__error" role="alert">
+        {{ 'editor.generalSettings.dates.errors.required' | transloco }}
+      </p>
+    } @else if (form.errors?.['endNotAfterStart']) {
+      <p class="field__error" role="alert">
+        {{ 'editor.generalSettings.dates.errors.endNotAfterStart' | transloco }}
+      </p>
+    }
+  </div>
+
+  <!-- Result Date -->
+  <div class="field">
+    <label class="field__label" for="result-date">
+      {{ 'editor.generalSettings.dates.resultDate.label' | transloco }}
+    </label>
+    <p class="field__desc">{{ 'editor.generalSettings.dates.resultDate.desc' | transloco }}</p>
+    <input
+      id="result-date"
+      type="datetime-local"
+      class="field__input"
+      formControlName="Result"
+      [min]="form.controls.End.value"
+      [class.field__input--error]="
+        (form.controls.Result.invalid) ||
+        (form.errors?.['resultNotAfterEnd'])
+      "
+    />
+    @if (form.controls.Result.hasError('required')) {
+      <p class="field__error" role="alert">
+        {{ 'editor.generalSettings.dates.errors.required' | transloco }}
+      </p>
+    } @else if (form.errors?.['resultNotAfterEnd']) {
+      <p class="field__error" role="alert">
+        {{ 'editor.generalSettings.dates.errors.resultNotAfterEnd' | transloco }}
+      </p>
+    }
+  </div>
+
+</form>

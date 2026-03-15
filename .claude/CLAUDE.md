@@ -53,3 +53,13 @@ You are an expert in TypeScript, Angular, and scalable web application developme
 - Design services around a single responsibility
 - Use the `providedIn: 'root'` option for singleton services
 - Use the `inject()` function instead of constructor injection
+
+## Css & Design
+
+- Always design UI/UX with mobile in mind.
+- Always design UI/UX beautifully.
+- Always place colors in styles.scss as variables
+
+# Tests
+
+- When making services or components, always generate tests.

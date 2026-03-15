@@ -1,0 +1,129 @@
+{
+  "editor": {
+    "nav": {
+      "generalSettings": "Allgemeine Einstellungen",
+      "newsScript": "Nachrichtenskript",
+      "teams": "Teams",
+      "general": "Allgemein",
+      "news": "Nachrichten"
+    },
+    "saveFile": "Datei speichern",
+    "saveFileAriaLabel": "Datei speichern",
+    "closeEditor": "Editor schließen",
+    "closeEditorAriaLabel": "Editor schließen",
+    "closeModal": {
+      "title": "Editor schließen?",
+      "desc": "Nicht gespeicherte Änderungen gehen verloren.",
+      "cancel": "Abbrechen",
+      "saveAndExit": "Speichern und beenden",
+      "exitWithoutSaving": "Ohne Speichern beenden"
+    },
+    "generalSettings": {
+      "tabs": {
+        "ariaLabel": "Allgemeine Einstellungskategorien",
+        "general": "Allgemein",
+        "dates": "Daten",
+        "rotation": "Rotation"
+      },
+      "general": {
+        "festivalId": {
+          "label": "Festival-ID",
+          "desc": "Eindeutiger numerischer Bezeichner für dieses Splatfest."
+        },
+        "battleResultRate": {
+          "label": "Kampfergebnisrate",
+          "desc": "Rate für die Berechnung von Kampfergebnissen."
+        },
+        "version": {
+          "label": "Version",
+          "desc": "Versionsnummer des Dateiformats."
+        },
+        "errorMin": "Muss eine Zahl ≥ 0 sein."
+      },
+      "dates": {
+        "announceDate": {
+          "label": "Ankündigungsdatum",
+          "desc": "Wenn das Splatfest den Spielern angekündigt wird."
+        },
+        "startDate": {
+          "label": "Startdatum",
+          "desc": "Wenn die Splatfest-Kämpfe beginnen."
+        },
+        "endDate": {
+          "label": "Enddatum",
+          "desc": "Wenn die Splatfest-Kämpfe enden."
+        },
+        "resultDate": {
+          "label": "Ergebnisdatum",
+          "desc": "Wenn die Ergebnisse bekannt gegeben werden."
+        },
+        "errors": {
+          "required": "Dieses Feld ist erforderlich.",
+          "startNotAfterAnnounce": "Start muss nach dem Ankündigungsdatum liegen.",
+          "endNotAfterStart": "Ende muss nach dem Startdatum liegen.",
+          "resultNotAfterEnd": "Ergebnis muss nach dem Enddatum liegen."
+        }
+      },
+      "rotation": {
+        "rule": {
+          "label": "Kampfmodus",
+          "desc": "Der Spielmodus während dieses Splatfests.",
+          "turfWars": "Revierkampf",
+          "splatZones": "Herrschaftsgebiet",
+          "towerControl": "Turmkommando",
+          "rainmaker": "Operation Goldfisch"
+        },
+        "stages": {
+          "sectionLabel": "Spielfelder",
+          "sectionDesc": "Wähle 1 bis 3 Spielfelder für dieses Splatfest.",
+          "addLabel": "Spielfeld hinzufügen",
+          "editAriaLabel": "Spielfeld ändern",
+          "removeAriaLabel": "Spielfeld entfernen",
+          "addAriaLabel": "Spielfeld hinzufügen",
+          "modal": {
+            "title": "Spielfeld auswählen",
+            "closeAriaLabel": "Spielfeldauswahl schließen"
+          },
+          "names": {
+            "0": "Seeigel-Unterführung",
+            "1": "Goldbrassen-Lager",
+            "2": "Salzspritz-Bohrinsel",
+            "3": "Arowana-Center",
+            "4": "Schwarzbauch-Park",
+            "5": "Camp Messerhecht",
+            "6": "Makrelenhafen",
+            "7": "Seetang-Kuppel",
+            "8": "Muränenturm",
+            "9": "Blauflossen-Depot",
+            "10": "Hammerhai-Brücke",
+            "11": "Flunder-Hochhäuser",
+            "12": "Museum D'Alfonsino",
+            "13": "Ancho-V-Games",
+            "14": "Piranha-Grube",
+            "15": "Mahi-Mahi-Resort"
+          }
+        }
+      }
+    }
+  },
+  "home": {
+    "subtitle": "Splatfest-Dateien für Splatoon 1 erstellen und bearbeiten",
+    "card": {
+      "hint": "Wie möchtest du beginnen?",
+      "openFile": {
+        "label": "Datei öffnen",
+        "desc": "Eine .byaml-Datei importieren",
+        "ariaLabel": "Splatfest-Datei öffnen"
+      },
+      "template": {
+        "label": "Vorlage verwenden",
+        "desc": "Mit einem leeren Splatfest beginnen"
+      }
+    },
+    "error": {
+      "title": "Ungültige Datei",
+      "desc": "Die Datei konnte nicht geladen werden. Stelle sicher, dass es eine gültige Splatfest-Datei und ein gültiges BYAML ist und nicht beschädigt wurde.",
+      "close": "Verstanden"
+    }
+  }
+}

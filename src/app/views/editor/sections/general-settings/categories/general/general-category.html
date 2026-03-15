@@ -1,0 +1,52 @@
+<form class="general-form" [formGroup]="form" novalidate>
+  <div class="field">
+    <label class="field__label" for="festival-id">{{ 'editor.generalSettings.general.festivalId.label' | transloco }}</label>
+    <p class="field__desc">{{ 'editor.generalSettings.general.festivalId.desc' | transloco }}</p>
+    <input
+      id="festival-id"
+      type="number"
+      class="field__input"
+      formControlName="FestivalId"
+      min="0"
+      step="1"
+      [class.field__input--error]="form.controls.FestivalId.invalid"
+    />
+    @if (form.controls.FestivalId.invalid) {
+      <p class="field__error" role="alert">{{ 'editor.generalSettings.general.errorMin' | transloco }}</p>
+    }
+  </div>
+
+  <div class="field">
+    <label class="field__label" for="battle-result-rate">{{ 'editor.generalSettings.general.battleResultRate.label' | transloco }}</label>
+    <p class="field__desc">{{ 'editor.generalSettings.general.battleResultRate.desc' | transloco }}</p>
+    <input
+      id="battle-result-rate"
+      type="number"
+      class="field__input"
+      formControlName="BattleResultRate"
+      min="0"
+      step="0.01"
+      [class.field__input--error]="form.controls.BattleResultRate.invalid"
+    />
+    @if (form.controls.BattleResultRate.invalid) {
+      <p class="field__error" role="alert">{{ 'editor.generalSettings.general.errorMin' | transloco }}</p>
+    }
+  </div>
+
+  <div class="field">
+    <label class="field__label" for="version">{{ 'editor.generalSettings.general.version.label' | transloco }}</label>
+    <p class="field__desc">{{ 'editor.generalSettings.general.version.desc' | transloco }}</p>
+    <input
+      id="version"
+      type="number"
+      class="field__input"
+      formControlName="Version"
+      min="0"
+      step="1"
+      [class.field__input--error]="form.controls.Version.invalid"
+    />
+    @if (form.controls.Version.invalid) {
+      <p class="field__error" role="alert">{{ 'editor.generalSettings.general.errorMin' | transloco }}</p>
+    }
+  </div>
+</form>

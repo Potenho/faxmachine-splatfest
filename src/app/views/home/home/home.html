@@ -1,0 +1,140 @@
+<div class="blobs" aria-hidden="true">
+  <div class="blobs__item blobs__item--1"></div>
+  <div class="blobs__item blobs__item--2"></div>
+  <div class="blobs__item blobs__item--3"></div>
+</div>
+
+<main class="home">
+  <div class="home__inner">
+    <div class="home__lang">
+      <app-lang-switcher />
+    </div>
+
+    <header class="home__header">
+      <div class="home__eyebrow">
+        <svg class="home__eyebrow-icon" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+          <path d="M8 0l1.5 4.7H14l-3.9 2.9 1.5 4.7L8 9.4l-3.6 2.9 1.5-4.7L2 4.7h4.5z"/>
+        </svg>
+        FAXMACHINE
+        <span class="home__eyebrow-version">v{{ version }}</span>
+      </div>
+
+      <h1 class="home__title">
+        Splatfest<br>
+        <span class="home__title-accent">Editor</span>
+      </h1>
+
+      <p class="home__subtitle">{{ 'home.subtitle' | transloco }}</p>
+    </header>
+
+    <div class="home__card">
+      <p class="home__card-hint">{{ 'home.card.hint' | transloco }}</p>
+
+      <div class="home__options">
+        <label
+          class="option"
+          [class.option--loading]="loadingAction() === 'file'"
+          [class.option--disabled]="loading()"
+        >
+          <input
+            type="file"
+            class="option__file-input"
+            accept=".byaml,.byml"
+            [disabled]="loading()"
+            (change)="onFileSelected($event)"
+            [attr.aria-label]="'home.card.openFile.ariaLabel' | transloco"
+          />
+
+          <span class="option__icon-wrap option__icon-wrap--purple" aria-hidden="true">
+            @if (loadingAction() === 'file') {
+              <svg class="option__spinner" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="12" cy="12" r="10" stroke-opacity="0.2"/>
+                <path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"/>
+              </svg>
+            } @else {
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="17 8 12 3 7 8"/>
+                <line x1="12" y1="3" x2="12" y2="15"/>
+              </svg>
+            }
+          </span>
+
+          <span class="option__text">
+            <span class="option__label">{{ 'home.card.openFile.label' | transloco }}</span>
+            <span class="option__desc">{{ 'home.card.openFile.desc' | transloco }}</span>
+          </span>
+
+          <span class="option__arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </label>
+
+        <button
+          type="button"
+          class="option"
+          [class.option--loading]="loadingAction() === 'template'"
+          [class.option--disabled]="loading()"
+          [disabled]="loading()"
+          (click)="onUseTemplate()"
+        >
+          <span class="option__icon-wrap option__icon-wrap--green" aria-hidden="true">
+            @if (loadingAction() === 'template') {
+              <svg class="option__spinner" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="12" cy="12" r="10" stroke-opacity="0.2"/>
+                <path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"/>
+              </svg>
+            } @else {
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2l2.09 6.26L20 10l-5.91 1.74L12 18l-2.09-6.26L4 10l5.91-1.74z"/>
+                <path d="M19 2l.9 2.7 2.7.9-2.7.9L19 9l-.9-2.7-2.7-.9 2.7-.9z" opacity="0.7"/>
+                <path d="M5 17l.6 1.8 1.8.6-1.8.6L5 22l-.6-1.8-1.8-.6 1.8-.6z" opacity="0.7"/>
+              </svg>
+            }
+          </span>
+
+          <span class="option__text">
+            <span class="option__label">{{ 'home.card.template.label' | transloco }}</span>
+            <span class="option__desc">{{ 'home.card.template.desc' | transloco }}</span>
+          </span>
+
+          <span class="option__arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</main>
+
+@if (showErrorModal()) {
+  <div
+    class="modal-backdrop"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="error-modal-title"
+    aria-describedby="error-modal-desc"
+    (click)="closeErrorModal()"
+  >
+    <div class="modal" (click)="$event.stopPropagation()">
+      <div class="modal__icon-wrap" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+          <line x1="12" y1="9" x2="12" y2="13"/>
+          <line x1="12" y1="17" x2="12.01" y2="17"/>
+        </svg>
+      </div>
+
+      <h2 id="error-modal-title" class="modal__title">{{ 'home.error.title' | transloco }}</h2>
+      <p id="error-modal-desc" class="modal__desc">{{ 'home.error.desc' | transloco }}</p>
+
+      <button type="button" class="modal__close-btn" (click)="closeErrorModal()">
+        {{ 'home.error.close' | transloco }}
+      </button>
+    </div>
+  </div>
+}

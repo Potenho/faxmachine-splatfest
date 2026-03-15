@@ -1,0 +1,129 @@
+{
+  "editor": {
+    "nav": {
+      "generalSettings": "General Settings",
+      "newsScript": "News Script",
+      "teams": "Teams",
+      "general": "General",
+      "news": "News"
+    },
+    "saveFile": "Save file",
+    "saveFileAriaLabel": "Save file",
+    "closeEditor": "Close editor",
+    "closeEditorAriaLabel": "Close editor",
+    "closeModal": {
+      "title": "Close editor?",
+      "desc": "Any unsaved changes will be lost.",
+      "cancel": "Cancel",
+      "saveAndExit": "Save and exit",
+      "exitWithoutSaving": "Exit without saving"
+    },
+    "generalSettings": {
+      "tabs": {
+        "ariaLabel": "General settings categories",
+        "general": "General",
+        "dates": "Dates",
+        "rotation": "Rotation"
+      },
+      "general": {
+        "festivalId": {
+          "label": "Festival ID",
+          "desc": "Unique numeric identifier for this Splatfest."
+        },
+        "battleResultRate": {
+          "label": "Battle Result Rate",
+          "desc": "Rate used for battle result calculations."
+        },
+        "version": {
+          "label": "Version",
+          "desc": "File format version number."
+        },
+        "errorMin": "Must be a number ≥ 0."
+      },
+      "dates": {
+        "announceDate": {
+          "label": "Announce Date",
+          "desc": "When the Splatfest is announced to players."
+        },
+        "startDate": {
+          "label": "Start Date",
+          "desc": "When the Splatfest battles begin."
+        },
+        "endDate": {
+          "label": "End Date",
+          "desc": "When the Splatfest battles end."
+        },
+        "resultDate": {
+          "label": "Result Date",
+          "desc": "When the results are revealed."
+        },
+        "errors": {
+          "required": "This field is required.",
+          "startNotAfterAnnounce": "Start must be after the Announce date.",
+          "endNotAfterStart": "End must be after the Start date.",
+          "resultNotAfterEnd": "Result must be after the End date."
+        }
+      },
+      "rotation": {
+        "rule": {
+          "label": "Battle Rule",
+          "desc": "The game mode played during this Splatfest.",
+          "turfWars": "Turf War",
+          "splatZones": "Splat Zones",
+          "towerControl": "Tower Control",
+          "rainmaker": "Rainmaker"
+        },
+        "stages": {
+          "sectionLabel": "Stages",
+          "sectionDesc": "Select 1 to 3 stages for this Splatfest.",
+          "addLabel": "Add stage",
+          "editAriaLabel": "Change stage",
+          "removeAriaLabel": "Remove stage",
+          "addAriaLabel": "Add stage",
+          "modal": {
+            "title": "Select a Stage",
+            "closeAriaLabel": "Close stage picker"
+          },
+          "names": {
+            "0": "Urchin Underpass",
+            "1": "Walleye Warehouse",
+            "2": "Saltspray Rig",
+            "3": "Arowana Mall",
+            "4": "Blackbelly Skatepark",
+            "5": "Camp Triggerfish",
+            "6": "Port Mackerel",
+            "7": "Kelp Dome",
+            "8": "Moray Towers",
+            "9": "Bluefin Depot",
+            "10": "Hammerhead Bridge",
+            "11": "Flounder Heights",
+            "12": "Museum d'Alfonsino",
+            "13": "Ancho-V Games",
+            "14": "Piranha Pit",
+            "15": "Mahi-Mahi Resort"
+          }
+        }
+      }
+    }
+  },
+  "home": {
+    "subtitle": "Create and modify Splatfest files for Splatoon 1",
+    "card": {
+      "hint": "Choose how to get started",
+      "openFile": {
+        "label": "Open file",
+        "desc": "Import a .byaml file",
+        "ariaLabel": "Open splatfest file"
+      },
+      "template": {
+        "label": "Use template",
+        "desc": "Start from a blank Splatfest"
+      }
+    },
+    "error": {
+      "title": "Invalid File",
+      "desc": "The file could not be loaded. Make sure it is a valid Splatfest file, a valid BYAML, and that it is not corrupted.",
+      "close": "Got it"
+    }
+  }
+}

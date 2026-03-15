@@ -1,0 +1,137 @@
+<div class="rotation-form">
+
+  <!-- Rule selector -->
+  <div class="field">
+    <label class="field__label" for="battle-rule">{{ 'editor.generalSettings.rotation.rule.label' | transloco }}</label>
+    <p class="field__desc" id="battle-rule-desc">{{ 'editor.generalSettings.rotation.rule.desc' | transloco }}</p>
+    <select
+      id="battle-rule"
+      class="field__select"
+      [formControl]="ruleControl"
+      aria-describedby="battle-rule-desc"
+    >
+      <option [value]="SplatfestRules.TurfWars">{{ 'editor.generalSettings.rotation.rule.turfWars' | transloco }}</option>
+      <option [value]="SplatfestRules.SplatZones">{{ 'editor.generalSettings.rotation.rule.splatZones' | transloco }}</option>
+      <option [value]="SplatfestRules.TowerControl">{{ 'editor.generalSettings.rotation.rule.towerControl' | transloco }}</option>
+      <option [value]="SplatfestRules.Rainmaker">{{ 'editor.generalSettings.rotation.rule.rainmaker' | transloco }}</option>
+    </select>
+  </div>
+
+  <!-- Stages -->
+  <div class="stages-section">
+    <p class="stages-section__label" id="stages-label">{{ 'editor.generalSettings.rotation.stages.sectionLabel' | transloco }}</p>
+    <p class="stages-section__desc">{{ 'editor.generalSettings.rotation.stages.sectionDesc' | transloco }}</p>
+
+    <ul class="stages-list" role="list" aria-labelledby="stages-label">
+      @for (stage of stages(); track stage.MapID; let i = $index) {
+        <li class="stages-list__item">
+          <button
+            type="button"
+            class="stage-card"
+            (click)="openModalForEdit(i)"
+            [attr.aria-label]="('editor.generalSettings.rotation.stages.editAriaLabel' | transloco) + ': ' + stageName(stage.MapID)"
+          >
+            <img
+              [ngSrc]="'/assets/stages/' + stage.MapID + '.webp'"
+              [alt]="stageName(stage.MapID)"
+              width="160"
+              height="90"
+              class="stage-card__img"
+            />
+            <span class="stage-card__name">
+              {{ 'editor.generalSettings.rotation.stages.names.' + stage.MapID | transloco }}
+            </span>
+            <span class="stage-card__edit-hint" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+              </svg>
+            </span>
+          </button>
+
+          @if (canRemove()) {
+            <button
+              type="button"
+              class="stage-remove-btn"
+              (click)="removeStage(i, $event)"
+              [attr.aria-label]="('editor.generalSettings.rotation.stages.removeAriaLabel' | transloco) + ': ' + stageName(stage.MapID)"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="18" y1="6" x2="6" y2="18"/>
+                <line x1="6" y1="6" x2="18" y2="18"/>
+              </svg>
+            </button>
+          }
+        </li>
+      }
+    </ul>
+
+    @if (canAddMore()) {
+      <button
+        type="button"
+        class="stages-add-btn"
+        (click)="openModalForAdd()"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="12" y1="5" x2="12" y2="19"/>
+          <line x1="5" y1="12" x2="19" y2="12"/>
+        </svg>
+        {{ 'editor.generalSettings.rotation.stages.addLabel' | transloco }}
+      </button>
+    }
+  </div>
+
+</div>
+
+<!-- Stage picker modal -->
+@if (showModal()) {
+  <div
+    class="stage-modal-backdrop"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="stage-modal-title"
+    (click)="closeModal()"
+  >
+    <div class="stage-modal" (click)="$event.stopPropagation()">
+      <div class="stage-modal__header">
+        <h2 id="stage-modal-title" class="stage-modal__title">
+          {{ 'editor.generalSettings.rotation.stages.modal.title' | transloco }}
+        </h2>
+        <button
+          type="button"
+          class="stage-modal__close-btn"
+          (click)="closeModal()"
+          [attr.aria-label]="'editor.generalSettings.rotation.stages.modal.closeAriaLabel' | transloco"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+
+      <ul class="stage-picker" role="list">
+        @for (stage of allStages; track stage.id) {
+          <li>
+            <button
+              type="button"
+              class="stage-picker__item"
+              (click)="selectStage(stage.id)"
+            >
+              <img
+                [ngSrc]="'/assets/stages/' + stage.id + '.webp'"
+                [alt]="stageName(stage.id)"
+                width="160"
+                height="90"
+                class="stage-picker__img"
+              />
+              <span class="stage-picker__name">
+                {{ 'editor.generalSettings.rotation.stages.names.' + stage.id | transloco }}
+              </span>
+            </button>
+          </li>
+        }
+      </ul>
+    </div>
+  </div>
+}

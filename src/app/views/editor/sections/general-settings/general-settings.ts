@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { TranslocoPipe } from '@jsverse/transloco';
 import { GeneralCategory } from './categories/general/general-category';
 import { DatesCategory } from './categories/dates/dates-category';
@@ -9,6 +9,5 @@ import { RotationCategory } from './categories/rotation/rotation-category';
   imports: [TranslocoPipe, GeneralCategory, DatesCategory, RotationCategory],
   templateUrl: './general-settings.html',
   styleUrl: './general-settings.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GeneralSettings {}

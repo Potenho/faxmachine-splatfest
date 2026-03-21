@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, computed, effect, inject, input, output } from '@angular/core';
+import { Component, DestroyRef, computed, effect, inject, input, output } from '@angular/core';
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TranslocoPipe } from '@jsverse/transloco';
@@ -10,7 +10,6 @@ import { SpeakRawTextCommand } from '../../../../../../services/splatfest/types/
   imports: [ReactiveFormsModule, TranslocoPipe],
   templateUrl: './speak-raw-text-editor.html',
   styleUrl: './speak-raw-text-editor.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SpeakRawTextEditor {
   readonly #destroyRef = inject(DestroyRef);

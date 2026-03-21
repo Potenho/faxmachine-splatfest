@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, effect, inject, input, output } from '@angular/core';
+import { Component, DestroyRef, effect, inject, input, output } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { TranslocoPipe } from '@jsverse/transloco';
@@ -10,7 +10,6 @@ import { ShowHeaderCommand } from '../../../../../../services/splatfest/types/ne
   imports: [ReactiveFormsModule, TranslocoPipe],
   templateUrl: './show-header-editor.html',
   styleUrl: './show-header-editor.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ShowHeaderEditor {
   readonly #destroyRef = inject(DestroyRef);

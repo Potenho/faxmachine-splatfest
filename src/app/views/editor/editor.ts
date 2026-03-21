@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { TranslocoPipe } from '@jsverse/transloco';
 import { APP_VERSION } from '../../common/tokens/app-version.token';
@@ -10,7 +10,6 @@ import { FestThemeService } from '../../services/splatfest/fest-theme.service';
   imports: [RouterOutlet, RouterLink, RouterLinkActive, TranslocoPipe],
   templateUrl: './editor.html',
   styleUrl: './editor.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   host: { '(document:keydown.escape)': 'onEscapeKey()' },
 })
 export class Editor {

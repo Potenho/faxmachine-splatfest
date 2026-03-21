@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, computed, effect, inject, input, output, viewChild } from '@angular/core';
+import { Component, DestroyRef, computed, effect, inject, input, output, viewChild } from '@angular/core';
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { NgOptimizedImage } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -12,7 +12,6 @@ import { DispMapCommand } from '../../../../../../services/splatfest/types/news-
   imports: [ReactiveFormsModule, TranslocoPipe, NgOptimizedImage, StagePickerModal],
   templateUrl: './disp-map-editor.html',
   styleUrl: './disp-map-editor.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DispMapEditor {
   readonly #destroyRef = inject(DestroyRef);

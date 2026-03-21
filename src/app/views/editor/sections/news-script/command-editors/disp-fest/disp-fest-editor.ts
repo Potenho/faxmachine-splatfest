@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, effect, inject, input, output } from '@angular/core';
+import { Component, DestroyRef, effect, inject, input, output } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { TranslocoPipe } from '@jsverse/transloco';
@@ -10,7 +10,6 @@ import { DispFestCommand } from '../../../../../../services/splatfest/types/news
   imports: [ReactiveFormsModule, TranslocoPipe],
   templateUrl: './disp-fest-editor.html',
   styleUrl: './disp-fest-editor.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DispFestEditor {
   readonly #destroyRef = inject(DestroyRef);

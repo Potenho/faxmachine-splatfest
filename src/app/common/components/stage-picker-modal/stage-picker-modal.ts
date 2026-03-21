@@ -8,7 +8,6 @@ import { REGULAR_STAGES } from '../../tokens/regular-stages';
   imports: [NgOptimizedImage, TranslocoPipe],
   templateUrl: './stage-picker-modal.html',
   styleUrl: './stage-picker-modal.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StagePickerModal {
   readonly allStages = inject(REGULAR_STAGES);

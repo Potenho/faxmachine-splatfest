@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { TranslocoPipe } from '@jsverse/transloco';
 
 @Component({
@@ -6,7 +6,6 @@ import { TranslocoPipe } from '@jsverse/transloco';
   imports: [TranslocoPipe],
   templateUrl: './no-options-editor.html',
   styleUrl: './no-options-editor.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NoOptionsEditor {
   readonly commandName = input.required<string>();

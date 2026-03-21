@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, inject } from '@angular/core';
+import { Component, DestroyRef, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TranslocoPipe } from '@jsverse/transloco';
@@ -10,7 +10,6 @@ import { EditorService } from '../../../../../../services/splatfest/editor';
   imports: [ReactiveFormsModule, TranslocoPipe],
   templateUrl: './dates-category.html',
   styleUrl: './dates-category.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DatesCategory {
   #editorService = inject(EditorService);

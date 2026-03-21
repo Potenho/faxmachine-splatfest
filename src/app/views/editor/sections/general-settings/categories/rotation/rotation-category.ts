@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, DestroyRef, inject, signal, viewChild } from '@angular/core';
+import { Component, computed, DestroyRef, inject, signal, viewChild } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { NgOptimizedImage } from '@angular/common';
@@ -13,7 +13,6 @@ import { StagePickerModal } from '../../../../../../common/components/stage-pick
   imports: [TranslocoPipe, NgOptimizedImage, ReactiveFormsModule, StagePickerModal],
   templateUrl: './rotation-category.html',
   styleUrl: './rotation-category.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RotationCategory {
   readonly #editorService = inject(EditorService);

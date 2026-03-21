@@ -1,16 +1,15 @@
-import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslocoPipe } from '@jsverse/transloco';
 import { APP_VERSION } from '../../../common/tokens/app-version.token';
 import { EditorService } from '../../../services/splatfest/editor';
-import { LangSwitcher } from '../../../components/lang-switcher/lang-switcher';
+import { LangSwitcher } from '../../../common/components/lang-switcher/lang-switcher';
 
 @Component({
   selector: 'app-home',
   imports: [TranslocoPipe, LangSwitcher],
   templateUrl: './home.html',
   styleUrl: './home.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     '(document:keydown.escape)': 'onEscapeKey()',
   },

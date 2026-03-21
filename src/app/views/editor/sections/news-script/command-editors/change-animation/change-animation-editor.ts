@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, effect, inject, input, output } from '@angular/core';
+import { Component, DestroyRef, effect, inject, input, output } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { TranslocoPipe } from '@jsverse/transloco';
@@ -10,7 +10,6 @@ import { ChangeAnimationCommand } from '../../../../../../services/splatfest/typ
   imports: [ReactiveFormsModule, TranslocoPipe],
   templateUrl: './change-animation-editor.html',
   styleUrl: './change-animation-editor.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChangeAnimationEditor {
   readonly #destroyRef = inject(DestroyRef);

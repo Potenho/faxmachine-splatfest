@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, computed, inject, signal, viewChild } from '@angular/core';
+import { Component, ElementRef, computed, inject, signal, viewChild } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TranslocoPipe } from '@jsverse/transloco';
 import { EditorService } from '../../../../services/splatfest/editor';
@@ -57,7 +57,6 @@ const COMMAND_DEFAULTS: Record<string, AnyNewsCommands> = {
   ],
   templateUrl: './news-script.html',
   styleUrl: './news-script.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NewsScript {
   readonly #editorService = inject(EditorService);

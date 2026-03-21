@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { TranslocoService } from '@jsverse/transloco';
 
@@ -15,7 +15,6 @@ const LANGS = [
 @Component({
   selector: 'app-lang-switcher',
   imports: [],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="lang-switcher" role="group" aria-label="Language">
       @for (lang of langs; track lang.code) {

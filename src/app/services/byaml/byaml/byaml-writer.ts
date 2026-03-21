@@ -112,16 +112,18 @@ export class BymlWriter {
     this._writeUint24(table.size);
 
     const offsets: number[] = [];
-    table.forEach(() => {
+    for (let i = 0; i < table.size + 1; i++) {
       offsets.push(this._offset);
       this._writeUint32(0);
-    });
+    }
 
-    table.forEach((_, key) => {
+    for (const [key, _] of table.entries()) {
       const stringOffset = this._offset - startOffset;
       this._buffer.setUint32(offsets.shift()!, stringOffset, !this._be);
       this._writeString(key);
-    });
+    }
+
+    this._buffer.setUint32(offsets.shift()!, this._offset - startOffset, !this._be);
 
     this._alignTo4();
     return startOffset;

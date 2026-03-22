@@ -55,43 +55,6 @@
 
 // ─── Background blobs ─────────────────────────────────────────────────────────
 
-.blobs__item {
-  &--1 {
-    width: 600px;
-    height: 600px;
-    top: -150px;
-    left: -150px;
-    background: radial-gradient(circle, color-mix(in srgb, var(--color-primary) 55%, transparent), transparent 70%);
-
-    @media (prefers-reduced-motion: no-preference) {
-      animation: blob-drift-h1 22s infinite;
-    }
-  }
-
-  &--2 {
-    width: 500px;
-    height: 500px;
-    bottom: -120px;
-    right: -100px;
-    background: radial-gradient(circle, color-mix(in srgb, var(--color-secondary) 42%, transparent), transparent 70%);
-
-    @media (prefers-reduced-motion: no-preference) {
-      animation: blob-drift-h2 28s infinite;
-    }
-  }
-
-  &--3 {
-    width: 350px;
-    height: 350px;
-    top: 30%;
-    right: 10%;
-    background: radial-gradient(circle, color-mix(in srgb, var(--color-secondary) 20%, transparent), transparent 70%);
-
-    @media (prefers-reduced-motion: no-preference) {
-      animation: blob-drift-h3 18s infinite;
-    }
-  }
-}
 
 // ─── Home layout ──────────────────────────────────────────────────────────────
 

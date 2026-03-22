@@ -248,5 +248,13 @@
       "desc": "Le fichier n'a pas pu être chargé. Assurez-vous qu'il s'agit d'un fichier Splatfest valide, d'un BYAML valide et qu'il n'est pas corrompu.",
       "close": "Compris"
     }
+  },
+  "about": {
+    "title": "À propos",
+    "subtitle": "Splatfest Editor",
+    "github": "GitHub",
+    "githubButton": "Visiter GitHub",
+    "backButton": "Retour à l'accueil",
+    "content": "Vinicius a un petit piu piu!! 🐦"
   }
 }

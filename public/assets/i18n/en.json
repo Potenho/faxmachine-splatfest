@@ -248,5 +248,13 @@
       "desc": "The file could not be loaded. Make sure it is a valid Splatfest file, a valid BYAML, and that it is not corrupted.",
       "close": "Got it"
     }
+  },
+  "about": {
+    "title": "About",
+    "subtitle": "Splatfest Editor",
+    "github": "GitHub",
+    "githubButton": "Visit GitHub",
+    "backButton": "Back to Home",
+    "content": "Vinicius has a small piu piu!! 🐦"
   }
-}
+} 

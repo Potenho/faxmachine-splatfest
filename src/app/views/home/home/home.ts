@@ -53,6 +53,10 @@ export class Home {
     }
   }
 
+  navigateToAbout() {
+    this.#router.navigate(['home/about']);
+  }
+
   closeErrorModal() {
     this.showErrorModal.set(false);
   }

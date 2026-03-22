@@ -71,7 +71,7 @@
             </svg>
           </span>
         </label>
-
+        
         <button
           type="button"
           class="option"
@@ -98,6 +98,32 @@
           <span class="option__text">
             <span class="option__label">{{ 'home.card.template.label' | transloco }}</span>
             <span class="option__desc">{{ 'home.card.template.desc' | transloco }}</span>
+          </span>
+
+          <span class="option__arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </button>
+
+        <!-- Botão About adicionado -->
+        <button
+          type="button"
+          class="option"
+          (click)="navigateToAbout()"
+        >
+          <span class="option__icon-wrap option__icon-wrap--blue" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="12" y1="16" x2="12" y2="12"/>
+              <line x1="12" y1="8" x2="12.01" y2="8"/>
+            </svg>
+          </span>
+
+          <span class="option__text">
+            <span class="option__label">{{ 'home.card.about.label' | transloco }}</span>
+            <span class="option__desc">{{ 'home.card.about.desc' | transloco }}</span>
           </span>
 
           <span class="option__arrow" aria-hidden="true">
@@ -135,6 +161,7 @@
       <button type="button" class="modal__close-btn" (click)="closeErrorModal()">
         {{ 'home.error.close' | transloco }}
       </button>
+      
     </div>
   </div>
 }

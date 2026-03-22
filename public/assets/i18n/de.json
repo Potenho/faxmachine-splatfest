@@ -248,5 +248,13 @@
       "desc": "Die Datei konnte nicht geladen werden. Stelle sicher, dass es eine gültige Splatfest-Datei und ein gültiges BYAML ist und nicht beschädigt wurde.",
       "close": "Verstanden"
     }
+  },
+  "about": {
+    "title": "About",
+    "subtitle": "Splatfest Editor",
+    "github": "GitHub",
+    "githubButton": "GitHub besuchen",
+    "backButton": "Zurück zum Start",
+    "content": "Vinicius hat einen kleinen Piu Piu!! 🐦"
   }
 }

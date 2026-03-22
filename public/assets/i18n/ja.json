@@ -248,5 +248,13 @@
       "desc": "ファイルを読み込めませんでした。有効な Splatfest ファイルおよび BYAML であること、また破損していないことを確認してください。",
       "close": "わかった"
     }
+  },
+  "about": {
+    "title": "概要",
+    "subtitle": "Splatfest Editor",
+    "github": "GitHub",
+    "githubButton": "GitHubを見る",
+    "backButton": "ホームに戻る",
+    "content": "ヴィニシウスは小さいピウピウを持っています!! 🐦"
   }
 }

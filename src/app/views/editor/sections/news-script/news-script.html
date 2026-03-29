@@ -16,21 +16,11 @@
 
   <!-- Language & sync bar -->
   <div class="ns__lang-sync-bar">
-    <div class="field">
-      <label class="field__label" for="ns-lang">
-        {{ 'editor.newsScript.language' | transloco }}
-      </label>
-      <select
-        id="ns-lang"
-        class="field__select"
-        (change)="selectLanguage($any($event.target).value)">
-        @for (lang of languages; track lang) {
-          <option [value]="lang" [selected]="activeLanguage() === lang">
-            {{ 'editor.newsScript.languages.' + lang | transloco }}
-          </option>
-        }
-      </select>
-    </div>
+    <app-lang-selector
+      [selected]="activeLanguage()"
+      [attr.aria-label]="'editor.newsScript.language' | transloco"
+      (langChange)="selectLanguage($event)"
+    />
 
     <div class="ns__sync-actions">
       <button

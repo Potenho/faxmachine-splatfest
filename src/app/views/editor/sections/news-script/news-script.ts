@@ -1,6 +1,7 @@
 import { Component, ElementRef, computed, inject, signal, viewChild } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TranslocoPipe } from '@jsverse/transloco';
+import { LangSelector } from '../../../../common/components/lang-selector/lang-selector';
 import { EditorService } from '../../../../services/splatfest/editor';
 import { Languages } from '../../../../services/splatfest/types/languages';
 import { IdolEmotions, Idols } from '../../../../services/splatfest/types/idols';
@@ -50,7 +51,7 @@ const COMMAND_DEFAULTS: Record<string, AnyNewsCommands> = {
 @Component({
   selector: 'app-news-script',
   imports: [
-    TranslocoPipe, ReactiveFormsModule,
+    TranslocoPipe, ReactiveFormsModule, LangSelector,
     NoOptionsEditor, SpeakRawTextEditor, ChangeAnimationEditor,
     SpeakMsgLabelEditor, DispFestEditor, DispPictureEditor,
     DispMapEditor, ShowHeaderEditor,

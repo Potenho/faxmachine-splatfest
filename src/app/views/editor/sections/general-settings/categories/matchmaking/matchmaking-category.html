@@ -1,0 +1,19 @@
+<form class="matchmaking-form" [formGroup]="form" novalidate>
+
+  <label class="toggle-field">
+    <div class="toggle-field__text">
+      <span class="toggle-field__label">{{ 'editor.generalSettings.matchmaking.separateMatchingJP.label' | transloco }}</span>
+      <span class="toggle-field__desc">{{ 'editor.generalSettings.matchmaking.separateMatchingJP.desc' | transloco }}</span>
+    </div>
+    <app-toggle formControlName="SeparateMatchingJP" />
+  </label>
+
+  <label class="toggle-field">
+    <div class="toggle-field__text">
+      <span class="toggle-field__label">{{ 'editor.generalSettings.matchmaking.lowPopulationNotJP.label' | transloco }}</span>
+      <span class="toggle-field__desc">{{ 'editor.generalSettings.matchmaking.lowPopulationNotJP.desc' | transloco }}</span>
+    </div>
+    <app-toggle formControlName="LowPopulationNotJP" />
+  </label>
+
+</form>

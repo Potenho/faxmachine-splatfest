@@ -23,6 +23,10 @@
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 1.25rem;
   align-content: start;
+  max-width: 1140px;
+  margin-inline: auto;
+  width: 100%;
+  box-sizing: border-box;
 
   @media (max-width: 480px) {
     padding: 0.875rem;

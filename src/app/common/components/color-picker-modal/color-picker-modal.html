@@ -1,0 +1,283 @@
+<dialog
+  #dialog
+  class="color-modal"
+  aria-labelledby="color-modal-title"
+  (cancel)="onDialogCancel()"
+  (click)="onBackdropClick($event)"
+>
+
+  <div class="color-modal__header">
+    <h2 id="color-modal-title" class="color-modal__title">{{ title() }}</h2>
+    <button
+      type="button"
+      class="color-modal__close-btn"
+      (click)="onDialogCancel()"
+      [attr.aria-label]="'editor.colorPicker.closeAriaLabel' | transloco"
+    >
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="18" y1="6" x2="6" y2="18"/>
+        <line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="color-modal__body">
+
+    <!-- Color Preview + Native Picker -->
+    <div class="color-modal__preview-row">
+      <div
+        class="color-modal__preview"
+        [style.background]="hex()"
+        role="img"
+        [attr.aria-label]="hex()"
+      >
+        <span class="color-modal__preview-hex">{{ hex() }}</span>
+      </div>
+      <label
+        class="color-modal__native-btn"
+        [attr.aria-label]="'editor.colorPicker.openNative' | transloco"
+      >
+        <svg class="color-modal__native-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/>
+          <circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/>
+          <circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/>
+          <circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/>
+          <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688
+            0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0
+            1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461
+            2 12 2z"/>
+        </svg>
+        <span>{{ 'editor.colorPicker.openNative' | transloco }}</span>
+        <input
+          type="color"
+          class="color-modal__native-input"
+          [value]="hex()"
+          (input)="onHexChange($any($event.target).value)"
+        />
+      </label>
+    </div>
+
+    <!-- Tab Bar -->
+    <div class="color-modal__tabs" role="tablist">
+      @for (tab of tabs; track tab.id) {
+        <button
+          type="button"
+          role="tab"
+          class="color-modal__tab"
+          [class.color-modal__tab--active]="activeTab() === tab.id"
+          [attr.aria-selected]="activeTab() === tab.id"
+          [id]="'cp-tab-' + tab.id"
+          [attr.aria-controls]="'cp-panel-' + tab.id"
+          (click)="activeTab.set(tab.id)"
+        >
+          {{ tab.label }}
+        </button>
+      }
+    </div>
+
+    <!-- Tab Panel -->
+    <div
+      class="color-modal__tab-panel"
+      role="tabpanel"
+      [id]="'cp-panel-' + activeTab()"
+      [attr.aria-labelledby]="'cp-tab-' + activeTab()"
+    >
+      @switch (activeTab()) {
+
+        @case ('hex') {
+          <div class="color-modal__hex-row">
+            <label class="color-modal__slot-label" for="cp-hex">HEX</label>
+            <input
+              id="cp-hex"
+              type="text"
+              class="color-modal__text-input field__input"
+              [value]="hex()"
+              (change)="onHexChange($any($event.target).value)"
+              maxlength="7"
+              spellcheck="false"
+              autocomplete="off"
+            />
+          </div>
+        }
+
+        @case ('rgb') {
+          <div class="color-modal__channels">
+            <div class="color-modal__channel">
+              <label class="color-modal__slot-label" for="cp-r">R</label>
+              <input
+                id="cp-r"
+                type="number"
+                class="color-modal__channel-input field__input"
+                min="0"
+                max="255"
+                [value]="r255()"
+                (change)="onRgbChange('r', $any($event.target).value)"
+              />
+              <span class="color-modal__channel-range" aria-hidden="true">0–255</span>
+            </div>
+            <div class="color-modal__channel">
+              <label class="color-modal__slot-label" for="cp-g">G</label>
+              <input
+                id="cp-g"
+                type="number"
+                class="color-modal__channel-input field__input"
+                min="0"
+                max="255"
+                [value]="g255()"
+                (change)="onRgbChange('g', $any($event.target).value)"
+              />
+              <span class="color-modal__channel-range" aria-hidden="true">0–255</span>
+            </div>
+            <div class="color-modal__channel">
+              <label class="color-modal__slot-label" for="cp-b">B</label>
+              <input
+                id="cp-b"
+                type="number"
+                class="color-modal__channel-input field__input"
+                min="0"
+                max="255"
+                [value]="b255()"
+                (change)="onRgbChange('b', $any($event.target).value)"
+              />
+              <span class="color-modal__channel-range" aria-hidden="true">0–255</span>
+            </div>
+          </div>
+        }
+
+        @case ('hsl') {
+          <div class="color-modal__channels">
+            <div class="color-modal__channel">
+              <label class="color-modal__slot-label" for="cp-h">H</label>
+              <input
+                id="cp-h"
+                type="number"
+                class="color-modal__channel-input field__input"
+                min="0"
+                max="360"
+                [value]="hsl().h"
+                (change)="onHslChange('h', $any($event.target).value)"
+              />
+              <span class="color-modal__channel-range" aria-hidden="true">0–360°</span>
+            </div>
+            <div class="color-modal__channel">
+              <label class="color-modal__slot-label" for="cp-s">S</label>
+              <input
+                id="cp-s"
+                type="number"
+                class="color-modal__channel-input field__input"
+                min="0"
+                max="100"
+                [value]="hsl().s"
+                (change)="onHslChange('s', $any($event.target).value)"
+              />
+              <span class="color-modal__channel-range" aria-hidden="true">0–100%</span>
+            </div>
+            <div class="color-modal__channel">
+              <label class="color-modal__slot-label" for="cp-l">L</label>
+              <input
+                id="cp-l"
+                type="number"
+                class="color-modal__channel-input field__input"
+                min="0"
+                max="100"
+                [value]="hsl().l"
+                (change)="onHslChange('l', $any($event.target).value)"
+              />
+              <span class="color-modal__channel-range" aria-hidden="true">0–100%</span>
+            </div>
+          </div>
+        }
+
+      }
+    </div>
+
+    <!-- Game Format Section -->
+    <div class="color-modal__game-section">
+      <div class="color-modal__game-header">
+        <svg class="color-modal__game-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="2" y="3" width="20" height="14" rx="2"/>
+          <line x1="8" y1="21" x2="16" y2="21"/>
+          <line x1="12" y1="17" x2="12" y2="21"/>
+        </svg>
+        <span class="color-modal__game-title">{{ 'editor.colorPicker.sections.gameFormat' | transloco }}</span>
+      </div>
+      <p class="color-modal__game-desc">{{ 'editor.colorPicker.gameFormatDesc' | transloco }}</p>
+      <div class="color-modal__game-channels">
+        <div class="color-modal__channel">
+          <label class="color-modal__slot-label" for="cp-gr">R</label>
+          <input
+            id="cp-gr"
+            type="number"
+            class="color-modal__channel-input field__input"
+            step="0.0001"
+            [value]="rRaw()"
+            (change)="onGameChange('r', $any($event.target).value)"
+          />
+        </div>
+        <div class="color-modal__channel">
+          <label class="color-modal__slot-label" for="cp-gg">G</label>
+          <input
+            id="cp-gg"
+            type="number"
+            class="color-modal__channel-input field__input"
+            step="0.0001"
+            [value]="gRaw()"
+            (change)="onGameChange('g', $any($event.target).value)"
+          />
+        </div>
+        <div class="color-modal__channel">
+          <label class="color-modal__slot-label" for="cp-gb">B</label>
+          <input
+            id="cp-gb"
+            type="number"
+            class="color-modal__channel-input field__input"
+            step="0.0001"
+            [value]="bRaw()"
+            (change)="onGameChange('b', $any($event.target).value)"
+          />
+        </div>
+        <div class="color-modal__channel">
+          <span class="color-modal__slot-label" aria-hidden="true">A</span>
+          <div class="color-modal__channel-readonly field__input" aria-label="Alpha: {{ aRaw() }}">
+            {{ aRaw() }}
+          </div>
+        </div>
+      </div>
+
+      @if (hasOverflow()) {
+        <div class="color-modal__overflow-warning" role="alert" aria-live="polite">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/>
+            <line x1="12" y1="9" x2="12" y2="13"/>
+            <line x1="12" y1="17" x2="12.01" y2="17"/>
+          </svg>
+          {{ 'editor.colorPicker.overflowWarning' | transloco }}
+        </div>
+      }
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <div class="color-modal__footer">
+    <button
+      type="button"
+      class="color-modal__btn color-modal__btn--cancel"
+      (click)="onDialogCancel()"
+    >
+      {{ 'editor.colorPicker.cancel' | transloco }}
+    </button>
+    <button
+      type="button"
+      class="color-modal__btn color-modal__btn--confirm"
+      (click)="onConfirm()"
+    >
+      {{ 'editor.colorPicker.confirm' | transloco }}
+    </button>
+  </div>
+
+</dialog>

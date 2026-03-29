@@ -1,0 +1,150 @@
+<div class="teams__lang-bar">
+  <app-lang-selector
+    [selected]="selectedLang()"
+    [attr.aria-label]="'editor.teams.languageAriaLabel' | transloco"
+    (langChange)="selectLang($event)"
+  />
+</div>
+
+<div class="teams__content">
+  <div class="teams__grid">
+
+    @if (teamAlpha(); as alpha) {
+      <section class="team-card team-card--alpha" [attr.aria-label]="'editor.teams.alpha.title' | transloco">
+        <div class="team-card__header">
+          <span class="team-badge team-badge--alpha" aria-hidden="true">α</span>
+          <h2 class="team-card__title">{{ 'editor.teams.alpha.title' | transloco }}</h2>
+        </div>
+        <div class="team-card__body">
+
+          <div class="field">
+            <span class="field__label" id="alpha-color-label">{{ 'editor.teams.color' | transloco }}</span>
+            <div class="teams__color-row" role="group" aria-labelledby="alpha-color-label">
+              <button
+                type="button"
+                class="teams__color-swatch-wrap"
+                (click)="openColorPicker(0)"
+                [attr.aria-label]="'editor.teams.alpha.colorAriaLabel' | transloco"
+              >
+                <div class="teams__color-swatch" [style.background]="alphaHex()"></div>
+              </button>
+              <span class="teams__hex-display">{{ alphaHex() }}</span>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="alpha-name">{{ 'editor.teams.name.label' | transloco }}</label>
+            <p class="field__desc">{{ 'editor.teams.name.desc' | transloco }}</p>
+            <textarea
+              id="alpha-name"
+              class="field__input teams__name-textarea"
+              [value]="alpha.Name[selectedLang()]"
+              (input)="updateAlphaName($any($event.target).value)"
+              rows="3"
+            ></textarea>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="alpha-short">{{ 'editor.teams.shortName.label' | transloco }}</label>
+            <p class="field__desc">{{ 'editor.teams.shortName.desc' | transloco }}</p>
+            <input
+              id="alpha-short"
+              type="text"
+              class="field__input"
+              [value]="alpha.ShortName[selectedLang()]"
+              (input)="updateAlphaShortName($any($event.target).value)"
+            />
+          </div>
+
+        </div>
+      </section>
+    }
+
+    @if (teamBravo(); as bravo) {
+      <section class="team-card team-card--bravo" [attr.aria-label]="'editor.teams.bravo.title' | transloco">
+        <div class="team-card__header">
+          <span class="team-badge team-badge--bravo" aria-hidden="true">β</span>
+          <h2 class="team-card__title">{{ 'editor.teams.bravo.title' | transloco }}</h2>
+        </div>
+        <div class="team-card__body">
+
+          <div class="field">
+            <span class="field__label" id="bravo-color-label">{{ 'editor.teams.color' | transloco }}</span>
+            <div class="teams__color-row" role="group" aria-labelledby="bravo-color-label">
+              <button
+                type="button"
+                class="teams__color-swatch-wrap"
+                (click)="openColorPicker(1)"
+                [attr.aria-label]="'editor.teams.bravo.colorAriaLabel' | transloco"
+              >
+                <div class="teams__color-swatch" [style.background]="bravoHex()"></div>
+              </button>
+              <span class="teams__hex-display">{{ bravoHex() }}</span>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="bravo-name">{{ 'editor.teams.name.label' | transloco }}</label>
+            <p class="field__desc">{{ 'editor.teams.name.desc' | transloco }}</p>
+            <textarea
+              id="bravo-name"
+              class="field__input teams__name-textarea"
+              [value]="bravo.Name[selectedLang()]"
+              (input)="updateBravoName($any($event.target).value)"
+              rows="3"
+            ></textarea>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="bravo-short">{{ 'editor.teams.shortName.label' | transloco }}</label>
+            <p class="field__desc">{{ 'editor.teams.shortName.desc' | transloco }}</p>
+            <input
+              id="bravo-short"
+              type="text"
+              class="field__input"
+              [value]="bravo.ShortName[selectedLang()]"
+              (input)="updateBravoShortName($any($event.target).value)"
+            />
+          </div>
+
+        </div>
+      </section>
+    }
+
+    @if (teamNeutral(); as neutral) {
+      <section class="team-card team-card--neutral" [attr.aria-label]="'editor.teams.neutral.title' | transloco">
+        <div class="team-card__header">
+          <span class="team-badge team-badge--neutral" aria-hidden="true">◎</span>
+          <h2 class="team-card__title">{{ 'editor.teams.neutral.title' | transloco }}</h2>
+        </div>
+        <div class="team-card__body">
+
+          <p class="team-card__neutral-desc">{{ 'editor.teams.neutral.desc' | transloco }}</p>
+
+          <div class="field">
+            <span class="field__label" id="neutral-color-label">{{ 'editor.teams.color' | transloco }}</span>
+            <div class="teams__color-row" role="group" aria-labelledby="neutral-color-label">
+              <button
+                type="button"
+                class="teams__color-swatch-wrap"
+                (click)="openColorPicker(2)"
+                [attr.aria-label]="'editor.teams.neutral.colorAriaLabel' | transloco"
+              >
+                <div class="teams__color-swatch" [style.background]="neutralHex()"></div>
+              </button>
+              <span class="teams__hex-display">{{ neutralHex() }}</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    }
+
+  </div>
+</div>
+
+<app-color-picker-modal
+  #colorPickerModal
+  [title]="colorPickerTitle()"
+  (colorChanged)="updateTeamColor($event)"
+/>

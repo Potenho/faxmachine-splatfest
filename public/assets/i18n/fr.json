@@ -23,7 +23,8 @@
         "ariaLabel": "Catégories de paramètres généraux",
         "general": "Général",
         "dates": "Dates",
-        "rotation": "Rotation"
+        "rotation": "Rotation",
+        "matchmaking": "Matchmaking"
       },
       "general": {
         "festivalId": {
@@ -103,7 +104,54 @@
             "15": "Resort Mahi-Mahi"
           }
         }
+      },
+      "matchmaking": {
+        "separateMatchingJP": {
+          "label": "Matchmaking Séparé (JP)",
+          "desc": "Sépare les files d'attente entre les joueurs JP et non-JP."
+        },
+        "lowPopulationNotJP": {
+          "label": "Faible Population (Non-JP)",
+          "desc": "Applique les règles de matchmaking pour les régions à faible population hors Japon."
+        }
       }
+    },
+    "teams": {
+      "languageAriaLabel": "Select language for team names",
+      "color": "Color",
+      "hexAriaLabel": "Hex color value",
+      "name": {
+        "label": "Name",
+        "desc": "Team name displayed in-game."
+      },
+      "shortName": {
+        "label": "Short Name",
+        "desc": "Abbreviated team name shown in compact UI."
+      },
+      "alpha": {
+        "title": "Team Callie",
+        "colorAriaLabel": "Team Callie color picker"
+      },
+      "bravo": {
+        "title": "Team Marie",
+        "colorAriaLabel": "Team Marie color picker"
+      },
+      "neutral": {
+        "title": "Neutral",
+        "desc": "La couleur neutre est utilisée sur certains objets du jeu et sur l'écran de fin de partie, lorsque le message \"Game!\" apparaît.",
+        "colorAriaLabel": "Neutral color picker"
+      }
+    },
+    "colorPicker": {
+      "closeAriaLabel": "Fermer le sélecteur de couleur",
+      "openNative": "Ouvrir le sélecteur natif",
+      "confirm": "Appliquer",
+      "cancel": "Annuler",
+      "sections": {
+        "gameFormat": "Format du jeu"
+      },
+      "gameFormatDesc": "Les valeurs peuvent dépasser 1. L'aperçu limite chaque canal à 1.",
+      "overflowWarning": "Un ou plusieurs canaux dépassent 1 — l'aperçu est limité à 1."
     },
     "newsScript": {
       "tabsAriaLabel": "Sections du script de nouvelles",

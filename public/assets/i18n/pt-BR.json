@@ -23,7 +23,8 @@
         "ariaLabel": "Categorias de configurações gerais",
         "general": "Geral",
         "dates": "Datas",
-        "rotation": "Rotação"
+        "rotation": "Rotação",
+        "matchmaking": "Matchmaking"
       },
       "general": {
         "festivalId": {
@@ -103,7 +104,54 @@
             "15": "Resort Mahi-Mahi"
           }
         }
+      },
+      "matchmaking": {
+        "separateMatchingJP": {
+          "label": "Matchmaking Separado (JP)",
+          "desc": "Separa as filas de matchmaking entre jogadores JP e não-JP."
+        },
+        "lowPopulationNotJP": {
+          "label": "Baixa População (Não-JP)",
+          "desc": "Aplica regras de matchmaking para regiões com baixa população fora do Japão."
+        }
       }
+    },
+    "teams": {
+      "languageAriaLabel": "Selecionar idioma para nomes dos times",
+      "color": "Cor",
+      "hexAriaLabel": "Valor hexadecimal da cor",
+      "name": {
+        "label": "Nome",
+        "desc": "Nome do time exibido no jogo."
+      },
+      "shortName": {
+        "label": "Nome Curto",
+        "desc": "Nome abreviado do time exibido na UI compacta."
+      },
+      "alpha": {
+        "title": "Time Callie",
+        "colorAriaLabel": "Seletor de cor do Time Callie"
+      },
+      "bravo": {
+        "title": "Time Marie",
+        "colorAriaLabel": "Seletor de cor do Time Marie"
+      },
+      "neutral": {
+        "title": "Neutro",
+        "desc": "A cor neutra é usada em alguns objetos do jogo e na tela de encerramento de partida, quando aparece a mensagem \"Game!\".",
+        "colorAriaLabel": "Seletor de cor neutro"
+      }
+    },
+    "colorPicker": {
+      "closeAriaLabel": "Fechar seletor de cor",
+      "openNative": "Abrir seletor nativo",
+      "confirm": "Aplicar",
+      "cancel": "Cancelar",
+      "sections": {
+        "gameFormat": "Formato do Jogo"
+      },
+      "gameFormatDesc": "Valores podem ultrapassar 1. A visualização limita cada canal ao máximo de 1.",
+      "overflowWarning": "Um ou mais canais ultrapassam 1 — a visualização é limitada a 1."
     },
     "newsScript": {
       "tabsAriaLabel": "Seções do roteiro de notícias",

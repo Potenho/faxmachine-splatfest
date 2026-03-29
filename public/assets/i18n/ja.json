@@ -23,7 +23,8 @@
         "ariaLabel": "一般設定カテゴリー",
         "general": "一般",
         "dates": "日付",
-        "rotation": "ローテーション"
+        "rotation": "ローテーション",
+        "matchmaking": "マッチング"
       },
       "general": {
         "festivalId": {
@@ -103,7 +104,54 @@
             "15": "マヒマヒリゾート&スパ"
           }
         }
+      },
+      "matchmaking": {
+        "separateMatchingJP": {
+          "label": "JP専用マッチング",
+          "desc": "JPと非JPのプレイヤーのマッチングキューを分離します。"
+        },
+        "lowPopulationNotJP": {
+          "label": "人口少数（非JP）",
+          "desc": "日本以外の地域で人口が少ない場合のマッチングルールを適用します。"
+        }
       }
+    },
+    "teams": {
+      "languageAriaLabel": "Select language for team names",
+      "color": "Color",
+      "hexAriaLabel": "Hex color value",
+      "name": {
+        "label": "Name",
+        "desc": "Team name displayed in-game."
+      },
+      "shortName": {
+        "label": "Short Name",
+        "desc": "Abbreviated team name shown in compact UI."
+      },
+      "alpha": {
+        "title": "Team Callie",
+        "colorAriaLabel": "Team Callie color picker"
+      },
+      "bravo": {
+        "title": "Team Marie",
+        "colorAriaLabel": "Team Marie color picker"
+      },
+      "neutral": {
+        "title": "Neutral",
+        "desc": "ニュートラルカラーは、一部のゲーム内オブジェクトや、試合終了時に「Game!」メッセージが表示される画面で使用されます。",
+        "colorAriaLabel": "Neutral color picker"
+      }
+    },
+    "colorPicker": {
+      "closeAriaLabel": "カラーピッカーを閉じる",
+      "openNative": "ネイティブピッカーを開く",
+      "confirm": "適用",
+      "cancel": "キャンセル",
+      "sections": {
+        "gameFormat": "ゲームフォーマット"
+      },
+      "gameFormatDesc": "値は1を超えることができます。プレビューは各チャンネルを1に制限します。",
+      "overflowWarning": "1つ以上のチャンネルが1を超えています — プレビューは1に制限されます。"
     },
     "newsScript": {
       "tabsAriaLabel": "ニュース スクリプト セクション",

@@ -23,7 +23,8 @@
         "ariaLabel": "Categorías de configuración general",
         "general": "General",
         "dates": "Fechas",
-        "rotation": "Rotación"
+        "rotation": "Rotación",
+        "matchmaking": "Matchmaking"
       },
       "general": {
         "festivalId": {
@@ -103,7 +104,54 @@
             "15": "Complejo Mahi-Mahi"
           }
         }
+      },
+      "matchmaking": {
+        "separateMatchingJP": {
+          "label": "Matchmaking Separado (JP)",
+          "desc": "Separa las colas de matchmaking entre jugadores JP y no-JP."
+        },
+        "lowPopulationNotJP": {
+          "label": "Baja Población (No-JP)",
+          "desc": "Aplica reglas de matchmaking para regiones con poca población fuera de Japón."
+        }
       }
+    },
+    "teams": {
+      "languageAriaLabel": "Select language for team names",
+      "color": "Color",
+      "hexAriaLabel": "Hex color value",
+      "name": {
+        "label": "Name",
+        "desc": "Team name displayed in-game."
+      },
+      "shortName": {
+        "label": "Short Name",
+        "desc": "Abbreviated team name shown in compact UI."
+      },
+      "alpha": {
+        "title": "Team Callie",
+        "colorAriaLabel": "Team Callie color picker"
+      },
+      "bravo": {
+        "title": "Team Marie",
+        "colorAriaLabel": "Team Marie color picker"
+      },
+      "neutral": {
+        "title": "Neutral",
+        "desc": "El color neutro se usa en algunos objetos del juego y en la pantalla de fin de partida, cuando aparece el mensaje \"Game!\".",
+        "colorAriaLabel": "Neutral color picker"
+      }
+    },
+    "colorPicker": {
+      "closeAriaLabel": "Cerrar selector de color",
+      "openNative": "Abrir selector nativo",
+      "confirm": "Aplicar",
+      "cancel": "Cancelar",
+      "sections": {
+        "gameFormat": "Formato del juego"
+      },
+      "gameFormatDesc": "Los valores pueden superar 1. La vista previa limita cada canal a 1.",
+      "overflowWarning": "Uno o más canales superan 1 — la vista previa está limitada a 1."
     },
     "newsScript": {
       "tabsAriaLabel": "Secciones del guión de noticias",

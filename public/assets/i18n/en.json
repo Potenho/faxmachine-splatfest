@@ -23,7 +23,8 @@
         "ariaLabel": "General settings categories",
         "general": "General",
         "dates": "Dates",
-        "rotation": "Rotation"
+        "rotation": "Rotation",
+        "matchmaking": "Matchmaking"
       },
       "general": {
         "festivalId": {
@@ -103,7 +104,54 @@
             "15": "Mahi-Mahi Resort"
           }
         }
+      },
+      "matchmaking": {
+        "separateMatchingJP": {
+          "label": "Separate Matching (JP)",
+          "desc": "Separates matchmaking queues for JP and non-JP players."
+        },
+        "lowPopulationNotJP": {
+          "label": "Low Population (Non-JP)",
+          "desc": "Applies low-population matchmaking rules for regions outside Japan."
+        }
       }
+    },
+    "teams": {
+      "languageAriaLabel": "Select language for team names",
+      "color": "Color",
+      "hexAriaLabel": "Hex color value",
+      "name": {
+        "label": "Name",
+        "desc": "Team name displayed in-game."
+      },
+      "shortName": {
+        "label": "Short Name",
+        "desc": "Abbreviated team name shown in compact UI."
+      },
+      "alpha": {
+        "title": "Team Callie",
+        "colorAriaLabel": "Team Callie color picker"
+      },
+      "bravo": {
+        "title": "Team Marie",
+        "colorAriaLabel": "Team Marie color picker"
+      },
+      "neutral": {
+        "title": "Neutral",
+        "desc": "The neutral color is used on some in-game objects and on the end-of-match screen, when the \"Game!\" message appears.",
+        "colorAriaLabel": "Neutral color picker"
+      }
+    },
+    "colorPicker": {
+      "closeAriaLabel": "Close color picker",
+      "openNative": "Open native picker",
+      "confirm": "Apply",
+      "cancel": "Cancel",
+      "sections": {
+        "gameFormat": "Game Format"
+      },
+      "gameFormatDesc": "Values may exceed 1. Preview clamps each channel to 1.",
+      "overflowWarning": "One or more channels exceed 1 — preview is clamped to 1."
     },
     "newsScript": {
       "tabsAriaLabel": "News script sections",

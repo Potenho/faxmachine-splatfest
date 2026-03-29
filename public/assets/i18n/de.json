@@ -23,7 +23,8 @@
         "ariaLabel": "Allgemeine Einstellungskategorien",
         "general": "Allgemein",
         "dates": "Daten",
-        "rotation": "Rotation"
+        "rotation": "Rotation",
+        "matchmaking": "Matchmaking"
       },
       "general": {
         "festivalId": {
@@ -103,7 +104,54 @@
             "15": "Mahi-Mahi-Resort"
           }
         }
+      },
+      "matchmaking": {
+        "separateMatchingJP": {
+          "label": "Getrenntes Matchmaking (JP)",
+          "desc": "Trennt die Matchmaking-Warteschlangen für JP- und Nicht-JP-Spieler."
+        },
+        "lowPopulationNotJP": {
+          "label": "Geringe Spielerzahl (Nicht-JP)",
+          "desc": "Wendet Matchmaking-Regeln für Regionen mit geringer Spielerzahl außerhalb Japans an."
+        }
       }
+    },
+    "teams": {
+      "languageAriaLabel": "Select language for team names",
+      "color": "Color",
+      "hexAriaLabel": "Hex color value",
+      "name": {
+        "label": "Name",
+        "desc": "Team name displayed in-game."
+      },
+      "shortName": {
+        "label": "Short Name",
+        "desc": "Abbreviated team name shown in compact UI."
+      },
+      "alpha": {
+        "title": "Team Callie",
+        "colorAriaLabel": "Team Callie color picker"
+      },
+      "bravo": {
+        "title": "Team Marie",
+        "colorAriaLabel": "Team Marie color picker"
+      },
+      "neutral": {
+        "title": "Neutral",
+        "desc": "Die neutrale Farbe wird bei einigen Spielobjekten und auf dem Abschlussbildschirm verwendet, wenn die Meldung \"Game!\" erscheint.",
+        "colorAriaLabel": "Neutral color picker"
+      }
+    },
+    "colorPicker": {
+      "closeAriaLabel": "Farbauswahl schließen",
+      "openNative": "Nativen Picker öffnen",
+      "confirm": "Anwenden",
+      "cancel": "Abbrechen",
+      "sections": {
+        "gameFormat": "Spielformat"
+      },
+      "gameFormatDesc": "Werte dürfen 1 überschreiten. Die Vorschau begrenzt jeden Kanal auf 1.",
+      "overflowWarning": "Ein oder mehrere Kanäle überschreiten 1 — die Vorschau wird auf 1 begrenzt."
     },
     "newsScript": {
       "tabsAriaLabel": "Newsskript-Sektionen",

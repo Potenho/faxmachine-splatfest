@@ -23,7 +23,7 @@
     <p class="stages-section__desc">{{ 'editor.generalSettings.rotation.stages.sectionDesc' | transloco }}</p>
 
     <ul class="stages-list" role="list" aria-labelledby="stages-label">
-      @for (stage of stages(); track stage.MapID; let i = $index) {
+      @for (stage of stages(); track $index; let i = $index) {
         <li class="stages-list__item">
           <button
             type="button"
@@ -34,8 +34,8 @@
             <img
               [ngSrc]="'/assets/stages/' + stage.MapID + '.webp'"
               [alt]="stageName(stage.MapID)"
-              width="160"
-              height="90"
+              width="80"
+              height="45"
               class="stage-card__img"
             />
             <span class="stage-card__name">

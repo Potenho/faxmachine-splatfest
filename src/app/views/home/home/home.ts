@@ -3,11 +3,11 @@ import { Router } from '@angular/router';
 import { TranslocoPipe } from '@jsverse/transloco';
 import { APP_VERSION } from '../../../common/tokens/app-version.token';
 import { EditorService } from '../../../services/splatfest/editor';
-import { LangSwitcher } from '../../../common/components/lang-switcher/lang-switcher';
+import { AppLangSwitcher } from '../../../common/components/app-lang-switcher/app-lang-switcher';
 
 @Component({
   selector: 'app-home',
-  imports: [TranslocoPipe, LangSwitcher],
+  imports: [TranslocoPipe, AppLangSwitcher],
   templateUrl: './home.html',
   styleUrl: './home.scss',
   host: {

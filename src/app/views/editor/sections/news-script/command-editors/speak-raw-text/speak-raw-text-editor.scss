@@ -1,9 +1,3 @@
 @use 'fields';
 @use 'cmd-form';
-@use 'toggle';
 @use 'speaker-picker';
-
-// Override toggle active color to follow the selected speaker
-.cmd-form__toggles .toggle__input:checked ~ .toggle__track {
-  background: var(--toggle-accent, var(--color-primary));
-}

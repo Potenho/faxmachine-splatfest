@@ -2,12 +2,13 @@ import { Component, DestroyRef, computed, effect, inject, input, output } from '
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TranslocoPipe } from '@jsverse/transloco';
+import { Toggle } from '../../../../../../common/components/toggle/toggle';
 import { IdolEmotions, Idols } from '../../../../../../services/splatfest/types/idols';
 import { SpeakRawTextCommand } from '../../../../../../services/splatfest/types/news-commands';
 
 @Component({
   selector: 'app-speak-raw-text-editor',
-  imports: [ReactiveFormsModule, TranslocoPipe],
+  imports: [ReactiveFormsModule, TranslocoPipe, Toggle],
   templateUrl: './speak-raw-text-editor.html',
   styleUrl: './speak-raw-text-editor.scss',
 })

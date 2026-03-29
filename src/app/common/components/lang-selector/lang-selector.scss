@@ -1,0 +1,41 @@
+@use 'mixins' as *;
+
+:host {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  min-width: 0;
+  flex-shrink: 1;
+
+  &::-webkit-scrollbar { display: none; }
+}
+
+.lang-selector__btn {
+  padding: 0.3rem 0.7rem;
+  border-radius: 0.375rem;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+
+  &:hover {
+    color: var(--color-text);
+    background: var(--color-surface);
+  }
+
+  &--active {
+    color: var(--color-team-neutral);
+    background: color-mix(in srgb, var(--color-team-neutral) 12%, transparent);
+    border-color: color-mix(in srgb, var(--color-team-neutral) 30%, transparent);
+  }
+
+  @include focus-ring();
+}

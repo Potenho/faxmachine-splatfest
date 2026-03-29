@@ -1,0 +1,11 @@
+@for (lang of languages; track lang) {
+  <button
+    type="button"
+    class="lang-selector__btn"
+    [class.lang-selector__btn--active]="selected() === lang"
+    [attr.aria-pressed]="selected() === lang"
+    (click)="langChange.emit(lang)"
+  >
+    {{ labels[lang] }}
+  </button>
+}
